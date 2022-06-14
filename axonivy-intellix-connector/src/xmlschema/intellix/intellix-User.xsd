@@ -6,7 +6,7 @@
            targetNamespace="http://dev.docuware.com/public/services/intellix"
            elementFormDefault="qualified">
   <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/links.xsd" />
-  <xs:include schemaLocation="./intellix-roles.xsd"/>
+  <xs:include schemaLocation="./intellix-Roles.xsd"/>
 
   <xs:complexType name="Quota">
     <xs:annotation>
