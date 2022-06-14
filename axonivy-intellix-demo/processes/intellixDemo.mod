@@ -40,8 +40,6 @@ io0 f3 queryParams 'extract=true;
 ' #txt
 io0 f3 templateParams 'host=;
 ' #txt
-io0 f3 headers 'Accept=application/json;
-' #txt
 io0 f3 method POST #txt
 io0 f3 bodyInputType FORM #txt
 io0 f3 bodyMediaType multipart/form-data #txt

@@ -13,6 +13,31 @@
         <version>9.3.1</version>
         <extensions>true</extensions>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>2.5.0</version>
+        <executions>
+          <execution>
+            <id>generate.intellix.pojos</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <sources>
+            <source>src/xmlschema</source>
+          </sources>
+          <arguments>
+          <argument>-XautoNameResolution</argument>
+          </arguments>
+          <outputDirectory>src_generated</outputDirectory>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 </project>

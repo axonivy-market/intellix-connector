@@ -13,8 +13,8 @@
   <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/errors.xsd" />
   <xs:import namespace="http://dev.docuware.com/settings/common" schemaLocation="../settings/common/keyvaluepairs.xsd"/>
   <xs:import namespace="http://dev.docuware.com/public/intellix" schemaLocation="intellix-DocumentContent.xsd"/>
-  <xs:include schemaLocation="intellix-IndexData.xsd"/>
-  <xs:include schemaLocation="./intellix-FieldValueContext.xsd"/>
+  <xs:include schemaLocation="./intellix-IndexData.xsd"/>
+   <xs:include schemaLocation="./intellix-FieldValueContext.xsd"/>
 
 
 
