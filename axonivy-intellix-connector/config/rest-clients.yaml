@@ -1,1 +1,16 @@
 RestClients:
+  intellix:
+    UUID: a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd
+    Url: https://{host}/
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - com.axonivy.connector.docuware.connector.DocuWareAuthFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    Properties:
+      PATH.host: ${ivy.var.intellix-connector.host}
+      UserName: ${ivy.var.intellix-connector.username}
+      Password: ${ivy.var.intellix-connector.password}
+      LogonUrl: ${ivy.var.intellix-connector.logonurl}
+      com.sun.jersey.impl.client.httpclient.handleCookies: 'true'
+      http.protocol.handle-redirects: 'true'
+      JSON.Serialization.PROPERTY_INCLUSION: NON_NULL

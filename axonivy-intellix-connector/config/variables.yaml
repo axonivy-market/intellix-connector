@@ -1,9 +1,14 @@
 # == Variables ==
-# 
-# You can define here your project Variables.
-# If you want to define/override a Variable for a specific Environment, 
-# add an additional ‘variables.yaml’ file in a subdirectory in the ‘Config’ folder: 
-# '<project>/Config/_<environment>/variables.yaml
-#
 Variables:
-#  myVariable: value
+  intellix-connector:
+    host:
+    username: 
+    # [password]
+    password: 
+    
+    # The Logon URL will be automatically determined.
+    # If this variable is set (not-empty), this URL
+    # will be taken as the Logon URL. It typically looks like
+    # https://.../Acount/Logon
+    # Only set this value, if the automatic determination does not work.
+    logonurl: ''
