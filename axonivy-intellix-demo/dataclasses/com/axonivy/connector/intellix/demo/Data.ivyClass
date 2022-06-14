@@ -1,3 +1,4 @@
 Data #class
 com.axonivy.connector.intellix.demo #namespace
 file java.io.File #field
+indexed com.docuware.dev._public.services.intellix.FeedbackMessage #field

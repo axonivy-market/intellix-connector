@@ -12,10 +12,12 @@ io0 @TextInP .responsibility .responsibility #zField
 io0 @StartRequest f0 '' #zField
 io0 @EndTask f1 '' #zField
 io0 @RestClientCall f3 '' #zField
-io0 @PushWFArc f2 '' #zField
 io0 @GridStep f6 '' #zField
 io0 @PushWFArc f7 '' #zField
 io0 @PushWFArc f4 '' #zField
+io0 @GridStep f5 '' #zField
+io0 @PushWFArc f8 '' #zField
+io0 @PushWFArc f2 '' #zField
 >Proto io0 io0 intellixDemo #zField
 io0 f0 outLink uploadSampleInvoice.ivp #txt
 io0 f0 inParamDecl '<> param;' #txt
@@ -33,7 +35,7 @@ io0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 io0 f0 @C|.responsibility Everybody #txt
 io0 f0 81 49 30 30 -25 17 #rect
-io0 f1 497 49 30 30 0 15 #rect
+io0 f1 369 265 30 30 0 15 #rect
 io0 f3 clientId a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd #txt
 io0 f3 path documents #txt
 io0 f3 queryParams 'extract=true;
@@ -46,6 +48,12 @@ io0 f3 bodyMediaType multipart/form-data #txt
 io0 f3 bodyForm 'file=in.file;
 msName="Default_axonivy";
 ' #txt
+io0 f3 resultType com.docuware.dev._public.services.intellix.FeedbackMessage #txt
+io0 f3 responseMapping 'out.indexed=result;
+' #txt
+io0 f3 responseCode 'ivy.log.info("recognized field count: "+result.indexData.getField().size());' #txt
+io0 f3 clientErrorCode ivy:error:rest:client #txt
+io0 f3 statusErrorCode ivy:error:rest:client #txt
 io0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -55,7 +63,6 @@ io0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 io0 f3 328 42 112 44 -39 -15 #rect
-io0 f2 440 64 497 64 #arcP
 io0 f6 actionTable 'out=in;
 ' #txt
 io0 f6 actionCode 'import com.axonivy.connector.intellix.FileLoaderUtil;
@@ -71,13 +78,38 @@ invoice</name>
 io0 f6 168 42 112 44 -38 -15 #rect
 io0 f7 111 64 168 64 #arcP
 io0 f4 280 64 328 64 #arcP
+io0 f5 actionTable 'out=in;
+' #txt
+io0 f5 actionCode 'import com.docuware.dev._public.services.intellix.Field;
+
+StringBuilder sb = new StringBuilder();
+for(Field field : in.indexed.indexData.getField()){
+  sb.append(field.getName())
+    .append("=")
+    .append(field.getValue().get(0).getText())
+    .append("\n");
+}
+ivy.log.info("got fields:"+sb.toString());' #txt
+io0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>log recoginzed
+fields</name>
+    </language>
+</elementInfo>
+' #txt
+io0 f5 320 146 128 44 -42 -15 #rect
+io0 f8 384 86 384 146 #arcP
+io0 f2 384 190 384 265 #arcP
 >Proto io0 .type com.axonivy.connector.intellix.demo.Data #txt
 >Proto io0 .processKind NORMAL #txt
 >Proto io0 0 0 32 24 18 0 #rect
 >Proto io0 @|BIcon #fIcon
-io0 f3 mainOut f2 tail #connect
-io0 f2 head f1 mainIn #connect
 io0 f0 mainOut f7 tail #connect
 io0 f7 head f6 mainIn #connect
 io0 f6 mainOut f4 tail #connect
 io0 f4 head f3 mainIn #connect
+io0 f3 mainOut f8 tail #connect
+io0 f8 head f5 mainIn #connect
+io0 f5 mainOut f2 tail #connect
+io0 f2 head f1 mainIn #connect
