@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://dev.docuware.com/settings/common" 
+	targetNamespace="http://dev.docuware.com/settings/common" elementFormDefault="qualified">
+
+
+	<xs:complexType name="KeyValuePairs">
+		<xs:annotation>
+			<xs:documentation>Contains a sequence of key-value pairs.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Entry" type="KeyValuePair" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>A key-value pair entry.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KeyValuePair">
+		<xs:annotation>
+			<xs:documentation>Contains a key-value pair.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The name of the environment variable.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Value" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The value of the environment variable.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

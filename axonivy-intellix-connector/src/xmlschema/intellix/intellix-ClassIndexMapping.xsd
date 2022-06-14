@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dev.docuware.com/public/services/intellix"
+	elementFormDefault="qualified">
+
+  <xs:element name="ClassIndexMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Class" type="Class" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="Class">
+    <xs:sequence>
+      <xs:element name="Index" type="IndexType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="ClassType"/>
+  </xs:complexType>
+
+  <xs:simpleType name="IndexType">
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="DocType"/>
+      <xs:enumeration value="Sender"/>
+      <xs:enumeration value="Recipient"/>
+      <xs:enumeration value="Date"/>
+      <xs:enumeration value="Subject"/>
+      <xs:enumeration value="ContactPerson"/>
+      <xs:enumeration value="ToBePaidOn"/>
+      <xs:enumeration value="CustomerNumber"/>
+      <xs:enumeration value="DocumentNumber"/>
+      <xs:enumeration value="Amount"/>
+
+      <xs:enumeration value="VatId"/>
+      <xs:enumeration value="ContactNumber"/>
+      <xs:enumeration value="Email"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Invoice"/>
+      <xs:enumeration value="Proposal"/>
+      <xs:enumeration value="PurchaseOrder"/>
+      <xs:enumeration value="Delivery"/>
+      <xs:enumeration value="Credit"/>
+      <xs:enumeration value="BankStatement"/>
+      <xs:enumeration value="Payroll"/>
+      <xs:enumeration value="Contract"/>
+      <xs:enumeration value="TaxReport"/>
+      <xs:enumeration value="TaxStatement"/>
+      <xs:enumeration value="TravelExpenses"/>
+      <xs:enumeration value="OrderConfirmation"/>
+      <xs:enumeration value="ProformaInvoice"/>
+      <xs:enumeration value="FeeNotice"/>
+      <xs:enumeration value="Quotation"/>
+      <xs:enumeration value="RequestQuotation"/>
+      <xs:enumeration value="Calculation"/>
+      <xs:enumeration value="StatementOfContributionPaid"/>
+      <xs:enumeration value="Brochure"/>
+      <xs:enumeration value="Presentation"/>
+      <xs:enumeration value="ActivityConfirmation"/>
+      <xs:enumeration value="Vouchers"/>
+
+      <xs:enumeration value="Dunning"/>
+      <xs:enumeration value="Negativeinvoice"/>
+
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

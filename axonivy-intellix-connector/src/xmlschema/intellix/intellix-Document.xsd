@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dw="http://dev.docuware.com/settings/common"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           xmlns:t="http://dev.docuware.com/public/services/intellix"
+           xmlns:c="http://dev.docuware.com/public/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           elementFormDefault="qualified"
+           jxb:version="2.0">
+  <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/links.xsd" />
+  <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/errors.xsd" />
+  <xs:import namespace="http://dev.docuware.com/settings/common" schemaLocation="../settings/common/keyvaluepairs.xsd"/>
+  <xs:import namespace="http://dev.docuware.com/public/intellix" schemaLocation="intellix-DocumentContent.xsd"/>
+  <xs:include schemaLocation="intellix-IndexData.xsd"/>
+  <xs:include schemaLocation="./intellix-FieldValueContext.xsd"/>
+
+
+
+  <xs:simpleType name="DocumentState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WithoutFeedback"/>
+      <xs:enumeration value="WithFeedback"/>
+      <xs:enumeration value="Obsolete"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="BorderDetection">
+    <xs:sequence>
+      <xs:element name="V" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Offset" type="xs:int" default="0"/>
+    <xs:attribute name="AxisLength" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="PageInfo">
+    <xs:attribute name="Dropped" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>If this flag is true then Intellix dropped the page, because it finds it not worth being kept.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ContentOffsetX" type="xs:int" default="0"/>
+    <xs:attribute name="ContentOffsetY" type="xs:int" default="0"/>
+    <xs:attribute name="Language" type="xs:string" default=""/>
+    <xs:attribute name="PageWidthInTwips" type="xs:double" default="0.0"/>
+    <xs:attribute name="PageHeightInTwips" type="xs:double" default="0.0"/>
+  </xs:complexType>
+
+  <xs:complexType name="DocumentInfo">
+    <xs:sequence>
+      <xs:element name="PageInfo" type="PageInfo" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="_ignore_me" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+<!--
+  <xs:complexType name="IndexDataCompound">
+    <xs:sequence>
+      <xs:element name="IndexData" type="IndexData" />
+      <xs:element name="Error" type="svc:Error" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="DocId" type="xs:string" use="required" />
+  </xs:complexType>
+-->
+  <xs:complexType name="DocIdList">
+    <xs:sequence>
+      <xs:element name="DocIds" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--
+  <xs:complexType name="MultipleIndexData">
+    <xs:sequence>
+      <xs:element name="Item" minOccurs="0" maxOccurs="unbounded" type="IndexDataCompound"/>
+    </xs:sequence>
+    <xs:attribute name="_ignore_me" default="false" type="xs:boolean"/>
+  </xs:complexType>
+-->
+  <xs:complexType name="DocumentMessage">
+    <xs:annotation>
+      <xs:appinfo>
+        <ContentType xmlns="http://dev.docuware.com/schema/public/services/annotations">application/vnd.docuware.intellix.document+xml</ContentType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Content" type="c:DocumentContent" minOccurs="0"/>
+      <xs:element name="IndexData" type="IndexData" minOccurs="0"/>
+      <xs:element name="DocumentInfo" type="DocumentInfo" minOccurs="0"/>
+      <xs:element name="ContextInfo" type="FieldContextInfo" minOccurs="0"/>
+      <xs:element name="MappingDescription" type="IntellixFieldsMappingDescription" minOccurs="0"/>
+      <xs:element ref="svc:Links" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+              <Relation Name="content">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>c:DocumentContent</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+
+              <Relation Name="indexData">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:IndexData</SchemaType>
+                  </Produces>
+                </Invoke>
+                <Invoke Verb="Put">
+                  <Accepts>
+                    <SchemaType>t:IndexData</SchemaType>
+                  </Accepts>
+                  <Produces>
+                    <SchemaType>t:IndexData</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+
+              <Relation Name="forceExtraction">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:IndexData</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+
+              <Relation Name="self">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:DocumentMessage</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+
+              <Relation Name="xProjection">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:BorderDetection</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+              <Relation Name="yProjection">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:BorderDetection</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Test" type="xs:boolean" default="false"/>
+    <xs:attribute name="Id" type="xs:string" />
+    <xs:attribute name="ModelspaceIdentifier" type="xs:int" default="-1"/>
+    <xs:attribute name="ModelspaceName" type="xs:string" />
+    <xs:attribute name="State" type="DocumentState" default="WithoutFeedback"/>
+    <xs:attribute name="CreatedAt" type="xs:dateTime" default="2000-01-01T00:00:00"/>
+  </xs:complexType>
+
+  <xs:complexType name ="SimpleDocumentsForUI">
+    <xs:sequence>
+      <xs:element name="DocInfos" minOccurs="0" maxOccurs="unbounded" type ="SimpleDocumentForUI"/>
+    </xs:sequence>        
+  </xs:complexType>
+  
+  <xs:complexType name="SimpleDocumentForUI">
+    <xs:attribute name="DocId" type ="xs:string" use="required"/>
+    <xs:attribute name="MsId" type ="xs:int" use="required"/>
+    <xs:attribute name="Company" type="xs:string"/>
+    <xs:attribute name="DocumentType" type="xs:string" />
+    <xs:attribute name="Date" type="xs:dateTime"/>
+    <xs:attribute name="State" type="xs:int"/>
+    <xs:attribute name="CreatedAt" type="xs:dateTime"/>
+  </xs:complexType>
+
+  <xs:complexType name="DocumentsMessage">
+    <xs:annotation>
+      <xs:appinfo>
+        <ContentType xmlns="http://dev.docuware.com/schema/public/services/annotations">application/vnd.docuware.intellix.documents+xml</ContentType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="svc:Links">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+              <Relation Name="scheduledDocuments">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:DocumentsMessage</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+              <Relation Name="runningDocuments">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:DocumentsMessage</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="Document" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+  <xs:element name="Document" type="DocumentMessage" />
+  <xs:element name="Documents" type="DocumentsMessage"/>
+  <xs:element name="DocumentInfo" type="DocumentInfo"/>
+
+</xs:schema>

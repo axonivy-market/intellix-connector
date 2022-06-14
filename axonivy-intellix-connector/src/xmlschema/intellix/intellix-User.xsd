@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           xmlns:t="http://dev.docuware.com/public/services/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           elementFormDefault="qualified">
+  <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/links.xsd" />
+  <xs:include schemaLocation="./intellix-roles.xsd"/>
+
+  <xs:complexType name="Quota">
+    <xs:annotation>
+      <xs:documentation>Defines a user Quota</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Credit" type="xs:int" nillable="true">
+        <xs:annotation>
+          <xs:documentation>The number of coins a user can use.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Booked" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The number of coins a user has already used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Do not change any order here! -->
+  <xs:simpleType name="UserType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSpecified"/>
+      <xs:enumeration value="OnPremise"/>
+      <xs:enumeration value="DWOnline"/>
+      <xs:enumeration value="RSD"/>
+      <xs:enumeration value="ADP"/>
+      <xs:enumeration value="Employee"/>
+      <xs:enumeration value="Inhouse"/>
+      <xs:enumeration value="TestAccount"/>
+      <xs:enumeration value="FileIndexer"/>
+      <xs:enumeration value="OnPremiseTrial"/>
+      <xs:enumeration value="DWOnlineTrial"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="UserProperties">
+    <xs:sequence>
+      <xs:element name="Tags" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+
+    <xs:attribute name="DisplayName" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>A readable name of the user.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Company" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The company of the user.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Uri" type="xs:anyURI">
+      <xs:annotation>
+        <xs:documentation>A link the the home page of the user.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Type" type="UserType" default="NotSpecified">
+      <xs:annotation>
+        <xs:documentation>The kind of the user.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+
+  <xs:complexType name="User">
+    <xs:annotation>
+      <xs:documentation>Defines an Intellix user</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Quota" type="Quota" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The quota of this user.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="UserProperties" minOccurs="0"/>
+      <xs:element ref="svc:Links" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+              <Relation Name="self">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:User</SchemaType>
+                  </Produces>
+                </Invoke>
+                <Invoke Verb="Delete">
+                  <Produces>
+                    <ContentType>text/plain</ContentType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+              <Relation Name="credit">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:Quota</SchemaType>
+                  </Produces>
+                </Invoke>
+                <Invoke Verb="Post">
+                  <Accepts>
+                    <SchemaType>t:Quota</SchemaType>
+                  </Accepts>
+                  <Produces>
+                    <SchemaType>t:Quota</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The name of the user.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Permissions" type="PermissionSet"/>
+    <!--
+    <xs:attribute name="Active" type="xs:boolean" default="true">
+      <xs:annotation>
+        <xs:documentation>Indicates whether the user is active or not. Can be used to lock out a user.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+-->
+    <xs:attribute name="Id" type="xs:int" use="required"/>
+    <xs:attribute name="DefaultParentModelspace" type="xs:string"/>
+    <xs:attribute name="Password" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          The password of the user. This property used only when a new user is created or when a user is changed. In case a client does
+          not set this property the password is not changed. This property is never filled by the server.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Users">
+    <xs:sequence>
+      <xs:element name="User" type="User" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="User" type="User"/>
+  <xs:element name="Users" type="Users"/>
+
+</xs:schema>

@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:int="http://dev.docuware.com/public/services/intellix"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dev.docuware.com/public/services/intellix"
+	elementFormDefault="qualified">
+
+  <xs:include schemaLocation="./intellix-CandidatesFilter.xsd" />
+
+  <xs:complexType name="CandidateEvaluator">
+    <xs:sequence>
+      <xs:element name="Expression" type="BooleanExpression" />
+    </xs:sequence>
+    <xs:attribute name="FilterType" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CandidateEvaluators">
+    <xs:sequence>
+      <xs:element name="CandidateEvaluator" type="CandidateEvaluator" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="CandidateEvaluators" type="CandidateEvaluators"/>      
+
+  
+
+  <xs:simpleType name="WeightType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.0" />
+      <xs:maxInclusive value="1.0" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType abstract="true" name="BaseExpression">
+    <xs:attribute name="Weight" type="WeightType" default="1"/>
+    <xs:attribute name="Lang" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="Constant1Expression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="Operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="And"/>
+      <xs:enumeration value="Or"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="BooleanExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:sequence>
+          <xs:element name="Expression" minOccurs="1" maxOccurs="unbounded" type="BaseExpression"/>
+        </xs:sequence>
+        <xs:attribute name="Operation" type="Operation" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NotExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:sequence>
+          <xs:element name="Expression" type="BaseExpression"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RegexExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:attribute name="Pattern" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ComplementExpression">
+    <xs:complexContent>
+      <xs:extension base="RegexExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SimpleFilterExpression">
+    <xs:complexContent>
+      <xs:extension base="RegexExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PrefixExpression">
+    <xs:complexContent>
+      <xs:extension base="RegexExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SuffixExpression">
+    <xs:complexContent>
+      <xs:extension base="RegexExpression" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PrefixOrSuffixExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:attribute name="PrefixPattern" use="required"/>
+        <xs:attribute name="SuffixPattern" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="DesiredNumberSize">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Biggest">
+        <xs:annotation>
+          <xs:documentation>The number should be the highest within the document.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Smallest">
+        <xs:annotation>
+          <xs:documentation>The number should be the lowest within the document.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="DesiredNumberSizeExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:attribute type="DesiredNumberSize" name="Size" default="Biggest"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DesiredNumberSizeWithinPageExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:attribute type="DesiredNumberSize" name="Size" default="Biggest"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="LowestRightMostNumberExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:complexType name="TopMostSenderExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SecondTopMostExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MostPresumableDocTypeExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TopMostDateExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="LowestRightMostNumberPerPageExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MinLengthExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:attribute type="xs:int" name="Length" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FontSizeExpression">
+    <xs:complexContent>
+      <xs:extension base="BaseExpression">
+        <xs:attribute type="xs:int" name="Size" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+</xs:schema>

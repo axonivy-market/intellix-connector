@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dw="http://dev.docuware.com/settings/common"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           elementFormDefault="qualified">
+  <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/links.xsd" />
+  <xs:import namespace="http://dev.docuware.com/settings/common" schemaLocation="../settings/common/keyvaluepairs.xsd"/>
+
+  <xs:element name="Fields" type="FieldsMetaData" />
+
+  <xs:element name="DocumentTypes" type="DocumentTypes"/>
+
+  <xs:complexType name="FieldsMetaData">
+    <xs:sequence>
+      <xs:element name="Field" type="FieldMetaData" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LocalizedStringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="Lang" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExtractionParameters">
+    <xs:attribute name="CanUseFixedValues" default="false" type="xs:boolean"/>    
+    <xs:attribute name="IsMoneyLike" default="false" type="xs:boolean"/>
+    <xs:attribute name="CanUseCorrection" default="false" type="xs:boolean"/>
+  </xs:complexType>
+
+  <xs:complexType name="FieldMetaData">
+    <xs:sequence>
+      <xs:element name="Label" type="LocalizedStringType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Description" type="LocalizedStringType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ExtractionParameters" type="ExtractionParameters"/>
+    </xs:sequence>
+    <xs:attribute name="Type" type="FieldValueType" default="Text"/>
+    <xs:attribute name="Id" type="xs:string"/>
+    <xs:attribute name="Propagation" type="PropagationType" default="All"/>
+  </xs:complexType>
+
+  <xs:complexType name="DocumentTypes">
+    <xs:sequence>
+      <xs:element name="DocumentType" type="DocumentTypeMetaData" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DocumentTypeMetaData">
+    <xs:sequence>
+      <xs:element name="Label" type="LocalizedStringType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Description" type="LocalizedStringType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type ="xs:string"/>
+  </xs:complexType>
+
+  <xs:simpleType name="FieldValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Text"/>
+      <xs:enumeration value="Decimal"/>
+      <xs:enumeration value="Date"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PropagationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nothing"/>
+      <xs:enumeration value="All"/>
+      <xs:enumeration value="AllButFixedValues"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

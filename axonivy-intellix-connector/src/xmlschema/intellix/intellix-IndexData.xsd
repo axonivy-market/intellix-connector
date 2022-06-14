@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://dev.docuware.com/public/services/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           elementFormDefault="qualified"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           jxb:version="2.0">
+  <xs:include schemaLocation="intellix-FieldValueContext.xsd"/>
+  <xs:include schemaLocation="intellix-IntellixFieldsMappingDescription.xsd"/>
+
+  <xs:element name="IndexData" type="IndexData"/>  
+
+  <xs:complexType name="IndexData">
+    <xs:annotation>
+      <xs:appinfo>
+        <ContentType xmlns="http://dev.docuware.com/schema/public/services/annotations">application/vnd.docuware.intellix.indexData+xml</ContentType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Field" type="Field" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TableField" type="DocuWareTableField" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Details" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SimilarDocument" minOccurs="0" maxOccurs="unbounded" type ="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Details_New" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SimilarDocument" minOccurs="0" maxOccurs="unbounded" type ="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Details_Extended" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SimilarDocument" minOccurs="0" maxOccurs="unbounded" type ="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LastChangedAt" type="xs:long" default="0"/>
+    <xs:attribute name="BonusPoints" type="xs:int" default="0"/>
+    <xs:attribute name="MalusPoints" type="xs:int" default="0"/>
+    <xs:attribute name="ElapsedTimeOnIntellix" type="xs:long" default="0"/>
+    <xs:attribute name="IsAutomaticallyStoredFeedback" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <xs:complexType name="Field">
+    <xs:sequence>
+      <xs:element name="Value" type="Value" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Confidence" type="ConfidenceLevelEnum" default="None"/>
+  </xs:complexType>
+
+  <xs:complexType name="DocuWareTableField">
+    <xs:sequence>
+      <xs:element name="Table" type="Table" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="DocuWareName" type="xs:string" use="required"/>
+    <xs:attribute name="Confidence" type="ConfidenceLevelEnum" default="None"/>
+  </xs:complexType>
+
+  <xs:simpleType name="AutoFillSource">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Other"/>
+      <xs:enumeration value="StoreDialog"/>
+      <xs:enumeration value="Viewer"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+	<xs:complexType name="AutoFillTableQuery">
+	<xs:sequence>
+	  <xs:element name="Table" type="Table" />
+	  <xs:element name="DocuWareName" type="xs:string" />
+	  <xs:element name="LastTemplateRow" type="xs:int" />
+	  <xs:element name="Source" type="AutoFillSource" />
+	</xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AutoFillTableResult">
+	  <xs:sequence>
+		  <xs:element name="Table" type="Table" />
+		  <xs:element name="DocuWareName" type="xs:string" />
+		  <xs:element name="TableMightContinueOnNextPage" type="xs:boolean" default="false" />
+	  </xs:sequence>
+  </xs:complexType>	
+
+  <xs:complexType name="Table">
+    <xs:sequence>
+      <xs:element name="Cell" type="Cell" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="HighlightRectangle" type="CoordinateReference" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Trust" type="Trust" default="1"/>
+  </xs:complexType>
+  
+  <xs:complexType name="Cell">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="Decimal" type="xs:decimal"/>
+        <xs:element name="Date" type="xs:date"/>
+        <xs:element name="Text" type="xs:string"/>
+      </xs:choice>
+      <xs:element name="DecimalFallback" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="DateFallback" type="xs:date" minOccurs="0"/>
+      <xs:element name="TextFallback" type="xs:string"/>
+      <xs:element name="CoordinateReference" type="CoordinateReference" minOccurs="0"/>
+      <xs:element name="HighlightRectangle" type="CoordinateReference" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="DocuWareColumnName" type="xs:string" use="required"/>
+    <xs:attribute name="RowNumber" type="xs:int" use="required"/>
+    <xs:attribute name="Mapped" type="xs:boolean" default="true"/>
+  </xs:complexType>
+
+  <xs:simpleType name="ConfidenceLevelEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="Green"/>
+      <xs:enumeration value="Yellow"/>
+      <xs:enumeration value="Red"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+
+  <xs:complexType name="ValueBase">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="Decimal" type="xs:decimal"/>
+        <xs:element name="Date" type="xs:date"/>
+        <xs:element name="Text" type="xs:string"/>
+      </xs:choice>
+      <xs:element name="CoordinateReference" type="CoordinateReference" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Contributor">
+    <xs:complexContent>
+      <xs:extension base="ValueBase">
+        <xs:sequence>
+          <xs:element name="Anchor" type="ValueContext" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="ReferenceDocumentId" type="xs:string" use="required"/>
+        <xs:attribute name="ReferenceDocumentId_New" type="xs:string" use="optional"/>
+        <xs:attribute name="ReferenceDocumentId_Extended" type="xs:string" use="optional"/>
+        
+        <xs:attribute name="Score" type="xs:double" default="0.0"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ValueTrust">
+    <xs:complexContent>
+      <xs:extension base="ValueBase">
+        <xs:attribute name="Trust" type="Trust" default="1"/>
+        <xs:attribute name="GeneratorModelSpaceId" type="xs:int"/>
+        <xs:attribute name="Generator" type="xs:string" default="Feedback">
+          <xs:annotation>
+            <xs:documentation>Specifies the algorithm which created this value, or if the the user provided the value as feedback.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Value">
+    <xs:complexContent>
+      <xs:extension base="ValueTrust">
+        <xs:sequence>
+          <xs:element name="Details" type="DebugInfo" minOccurs="0"/>
+          <xs:element name="AlternativeLocations" minOccurs="0" type="CoordinateReferences"/>
+        </xs:sequence>
+        <xs:attribute name="CorrectedByUser" type="xs:boolean" default="false"/>
+        <xs:attribute name="Origin" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExtractorValue">
+    <xs:complexContent>
+      <xs:extension base="ValueTrust">
+        <xs:sequence>
+          <xs:element name="Contributors" type="Contributors" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+
+  <xs:complexType name="DebugInfo">
+    <xs:sequence>
+      <xs:element name="ExtractorValue" type="ExtractorValue" minOccurs="1" maxOccurs ="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Contributors">
+    <xs:sequence>
+      <xs:element name="Contributor" type="Contributor" minOccurs="0" maxOccurs ="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="CoordinateReference">
+    <xs:attribute name="Page" type="xs:int" default="0"/>
+    <xs:attribute name="L" type="xs:int" use="required"/>
+    <xs:attribute name="T" type="xs:int" use="required"/>
+    <xs:attribute name="W" type="xs:int" use="required"/>
+    <xs:attribute name="H" type="xs:int" use="required"/>
+    <xs:attribute name ="Useable" type="xs:boolean" default="true"/>
+  </xs:complexType>
+
+  <xs:complexType name="CoordinateReferences">
+    <xs:sequence>
+      <xs:element name="Location" type="CoordinateReference" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="Trust">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:complexType name="FeedbackMessage">
+    <xs:sequence>
+      <xs:element name="IndexData" type="IndexData" />
+      <xs:element name="MappingDescription" type="IntellixFieldsMappingDescription" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

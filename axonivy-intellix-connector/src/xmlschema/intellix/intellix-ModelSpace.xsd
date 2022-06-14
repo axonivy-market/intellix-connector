@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:t="http://dev.docuware.com/public/services/intellix"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           xmlns:dw="http://dev.docuware.com/public/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           elementFormDefault="qualified">
+
+  <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/links.xsd" />
+  <xs:include schemaLocation="./intellix-Document.xsd"/>
+
+  <xs:complexType name="ModelSpace">
+    <xs:sequence>
+      <xs:element ref="svc:Links" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+
+              <Relation Name="self">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:ModelSpace</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+
+              <Relation Name="parent">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:ModelSpace</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+
+              <Relation Name="children">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:ModelSpaces</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+              <Relation Name="documents">
+                <Invoke>
+                  <Produces>
+                    <SchemaType>t:DocumentsMessage</SchemaType>
+                  </Produces>
+                </Invoke>
+                <Invoke Verb="Post">
+                  <Accepts>
+                    <SchemaType>t:DocumentMessage</SchemaType>
+                  </Accepts>
+                  <Produces>
+                    <SchemaType>t:DocumentMessage</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+
+    <xs:attribute name="Id" type="xs:int" default="-1"/>
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="UserName" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Contains the name of the user who owns this modelspace. Is set only when the requesting user is allowed to see it.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:complexType name="ModelSpaces">
+    <xs:sequence>
+      <xs:element name="Modelspace" type="ModelSpace" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ModelSpace" type="ModelSpace"/>
+  <xs:element name="ModelSpaces" type="ModelSpaces"/>
+
+
+  <xs:complexType name="FieldFilter">
+    <xs:attribute name="FieldName" use="required" type="xs:string"/>
+    <xs:attribute name="Enabled" default="false" type="xs:boolean"/>
+    <xs:attribute name="UploadedFileName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="FieldFilters">
+    <xs:sequence>
+      <xs:element name="Field" type="FieldFilter" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="svc:Links" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+              <Relation Name="upload">
+                <Invoke Verb="Post">
+                  <Accepts>
+                    <ContentType>application/x-www-form-urlencoded</ContentType>
+                  </Accepts>
+                  <Produces>
+                    <SchemaType>t:FieldFilters</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>             
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="FieldFilters" type="FieldFilters"/>
+
+  <xs:complexType name="DocumentTypeMapping">
+    <xs:sequence>
+      <xs:element name="Type" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="Id" type="xs:string" use="required"/>
+          <xs:attribute name="MappedName" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element ref="svc:Links" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+              <Relation Name="upload">
+                <Invoke Verb="Post">
+                  <Accepts>
+                    <ContentType>application/x-www-form-urlencoded</ContentType>
+                  </Accepts>
+                  <Produces>
+                    <SchemaType>t:DocumentTypeMapping</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="DocumentTypeMapping" type="DocumentTypeMapping"/>
+  
+  <xs:complexType name="ModelspaceLanguageSetup">    
+      <xs:sequence>
+        <xs:element name="Mapping" type="Language2DefaultCulture" maxOccurs="unbounded"/>                 
+      </xs:sequence>
+    <xs:attribute name="GlobalDefaultCulture" type="xs:string" use="optional"/>       
+  </xs:complexType>
+    
+
+  <xs:complexType name="Language2DefaultCulture">    
+      <xs:attribute name="Language" type="xs:string" />
+      <xs:attribute name="DefaultCulture" type="xs:string"/>    
+  </xs:complexType>
+
+  <xs:complexType name="ModelspaceConfiguration" >
+    <xs:sequence>
+      <xs:element name="LanguageSetup" type="ModelspaceLanguageSetup" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="UseDictionary" type="xs:boolean" default="true"/>
+    <xs:attribute name="UseLevenshteinDateCorrection" type="xs:boolean" default="true"/>
+    <xs:attribute name="UseLCSFieldFilterDistanceMeasure" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+</xs:schema>

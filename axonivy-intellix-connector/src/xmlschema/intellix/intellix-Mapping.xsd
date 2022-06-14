@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://dev.docuware.com/schema/public/services/platform"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           targetNamespace="http://dev.docuware.com/schema/public/services/platform"
+           elementFormDefault="qualified">
+
+  <xs:element name="IntellixMapping" type="IntellixMapping"/>
+
+
+  <xs:complexType name="IntellixMapping">
+    <xs:sequence>
+      <xs:element name="OriginalOwnCompanyName" type="xs:string"/>
+      <xs:element name="IgnoredFields" type="Strings"/>
+      <xs:element name="DocTypeField" type="Mapping"/>
+      <xs:element name="DocTypeMapping" type="DocTypeMapping" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="IndexFieldMapping" type="IndexFieldMapping" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Strings">
+    <xs:sequence>
+      <xs:element name="string" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DocTypeMapping">
+    <xs:sequence>
+      <xs:choice  minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="InOutMapping" type="InOutMapping"/>
+        <xs:element name="Mapping" type="Mapping"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="RemoveNotMapped" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <xs:complexType name="MappingBase" abstract="true">
+    <xs:attribute name="Intellix" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="Mapping">
+    <xs:complexContent>
+      <xs:extension base="MappingBase">
+        <xs:attribute name="DocuWare" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="InOutMapping">
+    <xs:complexContent>
+      <xs:extension base="MappingBase">
+        <xs:attribute name="InName" use="optional" default=""/>
+        <xs:attribute name="OutName" use="optional" default=""/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="IndexFieldMapping">
+    <xs:sequence>
+      <xs:element name="DefaultIndexFieldMapping" type="DefaultIndexFieldMapping" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="RelevantDoctype" type="RelevantDoctype" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DefaultIndexFieldMapping">
+    <xs:sequence>
+      <xs:element name="Mapping" type="Mapping" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RelevantDoctype">
+    <xs:sequence>
+      <xs:element name="Mapping" type="Mapping" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="DocType" use="required"/>
+  </xs:complexType>
+
+
+</xs:schema>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://dev.docuware.com/public/services/intellix"
+        elementFormDefault="qualified">
+
+  <xs:element name="IntellixLicensingInfo" type="IntellixLicensingInfo"/>
+
+  <xs:complexType name="IntellixLicensingInfo">
+    <xs:annotation>
+      <xs:appinfo>
+        <ContentType xmlns="http://dev.docuware.com/schema/public/services/annotations">application/vnd.docuware.intellix.connectionsetup+xml</ContentType>
+      </xs:appinfo>
+    </xs:annotation>    
+    <xs:attribute name="Company" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Gets the company for which this installation is licensed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="IsValid" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>Indicates if this installation is licensed correctly.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+</xs:schema>

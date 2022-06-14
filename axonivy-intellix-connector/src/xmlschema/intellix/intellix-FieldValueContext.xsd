@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://dev.docuware.com/public/services/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           elementFormDefault="qualified"
+           xmlns:svc="http://dev.docuware.com/schema/public/services">
+
+  <xs:include schemaLocation="intellix-IndexData.xsd"/>
+
+  <xs:element name="FieldContextInfo" type="FieldContextInfo"/>
+
+  <xs:complexType name="FieldContextInfo">
+    <xs:sequence>
+      <xs:element name="FieldValueContext" type="FieldValueContext" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FieldValueContext">
+    <xs:sequence>
+      <xs:element name="ValueContext" type="ValueContext" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="FieldName" type="xs:string" use="required"/>
+    <xs:attribute name="FormatString" type="xs:string"/>
+    <xs:attribute name="IsCompleteLine" type="xs:boolean" default="false"/>
+    <xs:attribute name="NumOfLineInTextZone" type="xs:int" default="-1"/>
+    <xs:attribute name="HowManyLinesInTextZone" type="xs:int" default="-1"/>
+    <xs:attribute name="LeftDistanceToNextLine" type ="xs:int" default="-1"/>
+    <xs:attribute name="RightDistanceToNextLine" type ="xs:int" default="-1"/>
+    <xs:attribute name="IsTopOfTextZone" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <xs:complexType name="ValueContext">
+    <xs:sequence>
+      <xs:element name="CoordinateReference" type="CoordinateReference"/>
+    </xs:sequence>
+    <xs:attribute name="AnchorText" type="xs:string" use="required"/>
+    <xs:attribute name="HorizontalDisplacement" type="xs:int" use="required"/>
+    <xs:attribute name="VerticalDisplacement" type="xs:int" use="required"/>
+    <xs:attribute name="Type" type="ValueContextDirectionType" use="required"/>
+    <xs:attribute name="ContextNumber" type="ValueContextNumber" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="ValueContextDirectionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Left"/>
+      <xs:enumeration value="Upper"/>
+      <xs:enumeration value="Lower"/>
+      <xs:enumeration value="Right"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ValueContextNumber">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Singleton"/>
+      <xs:enumeration value="First"/>
+      <xs:enumeration value="Last"/>
+      <xs:enumeration value="Middle"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

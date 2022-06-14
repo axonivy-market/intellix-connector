@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:int="http://dev.docuware.com/public/services/intellix"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dev.docuware.com/public/services/intellix"
+	elementFormDefault="qualified">
+
+  
+
+  <xs:element name="CandidateRuleSet" type="CandidateFieldRules" />
+
+  
+
+  <xs:complexType name="CandidateFieldRules">    
+    <xs:sequence>      
+      <xs:element name="CandidateFilters" type="CandidateFilters" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>    
+  </xs:complexType>
+
+  <xs:complexType name="CandidateFilters">
+    <xs:sequence>
+      <xs:element name="Filter" type="CandidateFilter" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Type" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="CandidateFilter">
+    <xs:attribute name="Type" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>
+        The candidate type, which this filter creates.
+      </xs:documentation>
+    </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="UseWithLanguage" type="xs:string" default="allLang">
+      <xs:annotation>
+        <xs:documentation>
+          Use this filter only for the specified rule.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ImplyCultures" type="xs:string" default="None">
+      <xs:annotation>
+        <xs:documentation>
+          If this filter hits, one of these cultures is probably correct.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ApplyOnCompressedContent" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          If this flag is &lt;c&gt;true&lt;/c&gt; then the expression is applied on the text content without any space.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="CaseSensitive" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          If this flag is &lt;c&gt;true&lt;/c&gt; then the expression is applied casesensitive on the text content.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ExactMatch" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          If this flag is &lt;c&gt;true&lt;/c&gt; then the expression is only looking for exact matches.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SurroundWithBoundaries" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          If this flag is &lt;c&gt;true&lt;/c&gt; then the expression yields only matches surrounded with boundaries.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="UseFiniteAutomaton" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          If this flag is &lt;c&gt;true&lt;/c&gt; then a finite automaton is used instead of a regex.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="UsePatternMatchingAutomaton" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          If this flag is &lt;c&gt;true&lt;/c&gt; then a pattern matching automaton is used instead of a regex.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Pattern" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          The regular expression for this filter.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  
+  
+</xs:schema>

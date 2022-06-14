@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:svc="http://dev.docuware.com/schema/public/services"
+        targetNamespace="http://dev.docuware.com/public/services/intellix"
+        elementFormDefault="qualified">
+
+  <xs:simpleType name="ErrorSubCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoFurtherReason">
+        <xs:annotation>
+          <xs:documentation>No further specified reason. Typically the error message contains all the information you need.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NoCreditLeft">
+        <xs:annotation>
+          <xs:documentation>This code indicates that a user cannot extract documents because his credit is over.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DocumentCannotBeAddedDbConflict">
+        <xs:annotation>
+          <xs:documentation>A document could not be added because of a conflict in the database.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EmptyContent">
+        <xs:annotation>
+          <xs:documentation>A document is empty.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ConnectionLostTryAgain">
+        <xs:annotation>
+          <xs:documentation>Connection interrupted. Please try again.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ResourceNotFound">
+        <xs:annotation>
+          <xs:documentation>Document / Modelspace / User was not found.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NotAuthorized">
+        <xs:annotation>
+          <xs:documentation>Not authorized to execute that operation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TextshotProblem">
+        <xs:annotation>
+          <xs:documentation>Textshot seems to be corrupted.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SevereError">
+        <xs:annotation>
+          <xs:documentation>This must not happen and should be fixed by Intellix development.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IncompleteOrIncorrectParameters">
+        <xs:annotation>
+          <xs:documentation>Files or parameters are missing / incorrect in the request.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IntellixTestOCRNotUseable">
+        <xs:annotation>
+          <xs:documentation>This OCR is only necessary for testing. In normal work with DocuWare it is not used.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IntellixBackgroundjobFailed">
+        <xs:annotation>
+          <xs:documentation>This should only be visible in logs and never for users. Check the inner exception for details.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NotLicensed">
+        <xs:annotation>
+          <xs:documentation>This copy of Intellixgent Indexing OnPremise is not licensed. Upload your DocuWare license in the Intelligent Indexing UI.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           xmlns:t="http://dev.docuware.com/public/services/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           elementFormDefault="qualified">
+  <xs:import namespace="http://dev.docuware.com/schema/public/services" schemaLocation="../services/links.xsd" />
+
+  <xs:simpleType name="Permission">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All">
+        <xs:annotation>
+          <xs:documentation>
+            All permissions.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ListModelspaceDocuments">
+        <xs:annotation>
+          <xs:documentation>
+            Lists all documents of a specified modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExtractDocument">
+        <xs:annotation>
+          <xs:documentation>
+            Extract a document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ViewDocumentContent">
+        <xs:annotation>
+          <xs:documentation>
+            View a document's content.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UploadDocument">
+        <xs:annotation>
+          <xs:documentation>
+            Upload a document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ListUsers">
+        <xs:annotation>
+          <xs:documentation>
+            Lists all users.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EditUserRoles">
+        <xs:annotation>
+          <xs:documentation>
+            Edit roles for a user.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EditRolePermissions">
+        <xs:annotation>
+          <xs:documentation>
+            Edit permissions for a role.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CreateUser">
+        <xs:annotation>
+          <xs:documentation>
+            Create another user account.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DeleteUser">
+        <xs:annotation>
+          <xs:documentation>
+            Deletes a user account.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CreateModelspace">
+        <xs:annotation>
+          <xs:documentation>
+            Create a new modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StartQualityEvaluationJob">
+        <xs:annotation>
+          <xs:documentation>
+            Create a job for checking the extraction quality.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExportModelspace">
+        <xs:annotation>
+          <xs:documentation>
+            Export a modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ImportModelspace">
+        <xs:annotation>
+          <xs:documentation>
+            Import a modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ChangeQuota">
+        <xs:annotation>
+          <xs:documentation>
+            Change the quota.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ViewLog">
+        <xs:annotation>
+          <xs:documentation>
+            Allows to inspect the log.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SeeAllModelspaces">
+        <xs:annotation>
+          <xs:documentation>
+            Allows to inspect all modelspaces and documents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ChangeParentModelspace">
+        <xs:annotation>
+          <xs:documentation>
+            Allows the user to change or attach/detach a parent modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RetrainAllModelspaces">
+        <xs:annotation>
+          <xs:documentation>
+            Allows to start retraining for all modelspaces.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StartManualAging">
+        <xs:annotation>
+          <xs:documentation>
+            Allows to start manual aging for a modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EnableDisableAging">
+        <xs:annotation>
+          <xs:documentation>
+            Allows to enable or disable aging for a modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EditOtherModelspaces">
+        <xs:annotation>
+          <xs:documentation>
+            Allows a user to edit other modelspaces and not just his own one. This is an administrative permission.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SeeReasonerRepository">
+        <xs:annotation>
+          <xs:documentation>
+            Allows a user to download the reasoner database.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ResetModelspace">
+        <xs:annotation>
+          <xs:documentation>
+            Allows a user to reset his modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <xs:enumeration value="DeleteModelspace">
+        <xs:annotation>
+          <xs:documentation>
+            Allows a user to delete his modelspace.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <xs:enumeration value="ViewJobs">
+        <xs:annotation>
+          <xs:documentation>
+            Allows a user to inspect the list of jobs.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      
+      <xs:enumeration value="ChangePassword">
+        <xs:annotation>
+          <xs:documentation>
+            Allows an admin to change user's password.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <xs:enumeration value="UploadLicense">
+        <xs:annotation>
+          <xs:documentation>
+            Allows an admin to upload license.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      
+      
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PermissionSet">
+    <xs:list itemType="Permission"/>
+  </xs:simpleType>
+
+  <xs:complexType name="Role">
+    <xs:annotation>
+      <xs:documentation>Defines a user role</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="svc:Links" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <Relations xmlns="http://dev.docuware.com/schema/public/services/annotations">
+              <Relation Name="self">
+                <Invoke Verb="Get">
+                  <Produces>
+                    <SchemaType>t:Role</SchemaType>
+                  </Produces>
+                </Invoke>
+              </Relation>
+            </Relations>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The name of the role.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Permissions" type="PermissionSet">
+      <xs:annotation>
+        <xs:documentation>The list of roles a user has.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Roles">
+    <xs:sequence>
+      <xs:element name="Role" type="Role" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Role" type="Role"/>
+  <xs:element name="Roles" type="Roles"/>
+
+  <xs:complexType name="PermissionList">
+    <xs:sequence>
+      <xs:element name="Permission" type="Permission" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Permissions" type="PermissionList"/>
+
+</xs:schema>

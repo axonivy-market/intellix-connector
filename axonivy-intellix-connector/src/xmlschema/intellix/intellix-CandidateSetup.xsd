@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<xs:schema xmlns="http://dev.docuware.com/public/services/intellix"
+           xmlns:int="http://dev.docuware.com/public/services/intellix"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dev.docuware.com/public/services/intellix"
+	elementFormDefault="qualified">
+
+  <xs:element name="CandidateSetup" type="CandidateSetup" />      
+
+  <xs:complexType name="CandidateSetup">
+    <xs:sequence>
+      <xs:element name="SetupElements" type="CandidateSetupElement" minOccurs="1" maxOccurs="unbounded"/>      
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CandidateSetupElement">
+    <xs:sequence>
+      <xs:element name="Type" type="CandidateType" />
+      <xs:element name="Parse" type="ParsingType" />
+      <xs:element name="Examine" type="xs:int" />            
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:string"/>
+    <xs:attribute name="LanguageDetectionTrust" type="xs:double" default="0.0" />
+    <xs:attribute name="RegionDetectionTrust" type="xs:double" default="0.0" />
+  </xs:complexType>
+
+  <xs:simpleType name="ParsingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoParsing"/>
+      <xs:enumeration value="ToDate"/>
+      <xs:enumeration value="ToNumber"/>
+    </xs:restriction>
+  </xs:simpleType>  
+
+  <xs:simpleType name="CandidateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IBAN" />
+      <xs:enumeration value="DocType" />
+      <xs:enumeration value="Sender" />
+      <xs:enumeration value="Recipient" />
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="VatId" />
+      <xs:enumeration value="Email" />
+      <xs:enumeration value="DocumentNumber" />
+      <xs:enumeration value="CustomerNumber" />
+      <xs:enumeration value="ContactPerson" />
+      <xs:enumeration value="Subject" />
+      <xs:enumeration value="DayNames" />
+      <xs:enumeration value="MonthNames" />
+      <xs:enumeration value="FirstNames" />
+      <xs:enumeration value="Locations" />
+      <xs:enumeration value="URL" />
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="ToBePaidOn" />
+      <xs:enumeration value="CurrencySymbol" />
+      <xs:enumeration value="BankName" />
+      <xs:enumeration value="CountryName" />
+    </xs:restriction>
+  </xs:simpleType>     
+</xs:schema>

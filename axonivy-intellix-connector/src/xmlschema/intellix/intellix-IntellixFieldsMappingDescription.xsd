@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://dev.docuware.com/public/services/intellix"
+           targetNamespace="http://dev.docuware.com/public/services/intellix"
+           elementFormDefault="qualified"
+           xmlns:svc="http://dev.docuware.com/schema/public/services"
+           xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           jxb:version="2.0">
+
+
+  <xs:complexType name="IntellixFieldsMappingDescription">
+    <xs:sequence>
+      <xs:element name="Fields" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="IntellixName" type="xs:string"/>
+          <xs:attribute name="DocuWareName" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Tables" type="IntellixFieldsMappingDescriptionTable" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Source">
+        <xs:complexType>
+          <xs:attribute name="DialogId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The unique identifier (GUID) of the dialog which is used to store the document.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="DialogName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The name of the dialog which is used to store the document.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="FileCabinetId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The unique identifier (GUID) of the file cabinet which is used to store the document.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="FileCabinetName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The name of the file cabinet which is used to store the document.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="UserId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The unique identifier (GUID) of the user who extracts the document.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="IntellixClientVersion" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The unique identifier (GUID) of the user who extracts the document.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="DocumentTrayId" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The unique identifier (GUID) of the document tray into which the document was put.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IntellixFieldsMappingDescriptionTable">
+    <xs:sequence>
+        <xs:element name="Column" type="MappingColumn" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="DocuWareName" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="MappingColumn" abstract="true">
+    <xs:attribute name="DocuWareColumnName" type="xs:string" use="required"/>
+    <xs:attribute name="FilledByIntellix" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="TextMappingColumn">
+    <xs:complexContent>
+      <xs:extension base="MappingColumn">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DateMappingColumn">
+    <xs:complexContent>
+      <xs:extension base="MappingColumn">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DecimalMappingColumn">
+    <xs:complexContent>
+      <xs:extension base="MappingColumn">
+         <xs:attribute name="DecimalPlaces" type="xs:int" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="IntellixFieldsMappingDescription" type="IntellixFieldsMappingDescription"/>
+</xs:schema>
