@@ -24,8 +24,8 @@ Ds0 @PushWFArc f6 '' #zField
 Ds0 f0 guid 181662ECBD94F944 #txt
 Ds0 f0 method start() #txt
 Ds0 f0 inParameterDecl '<> param;' #txt
-Ds0 f0 outParameterDecl '<java.io.File file> result;' #txt
-Ds0 f0 outParameterMapAction 'result.file=in.ivyFile.getJavaFile();
+Ds0 f0 outParameterDecl '<File file> result;' #txt
+Ds0 f0 outParameterMapAction 'result.file=in.ivyFile;
 ' #txt
 Ds0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
