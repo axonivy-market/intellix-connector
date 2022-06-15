@@ -1,0 +1,8 @@
+DocUploaderData #class
+com.axonivy.connector.intellix.demo.DocUploader #namespace
+ivyFile File #field
+ivyFile PERSISTENT #fieldModifier
+showContent Boolean #field
+showContent PERSISTENT #fieldModifier
+filePath String #field
+filePath PERSISTENT #fieldModifier
