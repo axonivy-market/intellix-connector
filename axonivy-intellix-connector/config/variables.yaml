@@ -5,6 +5,7 @@ Variables:
     username: 
     # [password]
     password: 
+    msName:
     
     # The Logon URL will be automatically determined.
     # If this variable is set (not-empty), this URL

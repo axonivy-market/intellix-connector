@@ -1,0 +1,4 @@
+intellixData #class
+com.axonivy.connector.intellix #namespace
+file java.io.File #field
+indexData com.docuware.dev._public.services.intellix.IndexData #field
