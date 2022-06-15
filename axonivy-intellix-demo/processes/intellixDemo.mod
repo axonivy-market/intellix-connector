@@ -87,12 +87,11 @@ out.indexed.indexData=result.indexData;
 io0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>intellix
-invoice</name>
+        <name>intellix</name>
     </language>
 </elementInfo>
 ' #txt
-io0 f3 328 42 112 44 -21 -18 #rect
+io0 f3 328 42 112 44 -19 -7 #rect
 io0 f4 280 64 328 64 #arcP
 io0 f8 384 86 384 170 #arcP
 io0 f9 outLink uploadInvoice.ivp #txt
@@ -136,11 +135,11 @@ io0 f13 responseMappingAction 'out=in;
 io0 f13 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>InvoiceViewer</name>
+        <name>DocumentViewer</name>
     </language>
 </elementInfo>
 ' #txt
-io0 f13 328 266 112 44 -42 -7 #rect
+io0 f13 328 266 112 44 -52 -7 #rect
 io0 f14 384 214 384 266 #arcP
 io0 f2 384 310 384 369 #arcP
 >Proto io0 .type com.axonivy.connector.intellix.demo.Data #txt

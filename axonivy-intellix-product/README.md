@@ -1,11 +1,15 @@
-# MY-PRODUCT-NAME
+# Intellix Connector
 
-YOUR DESCRIPTION GOES HERE
+Connector to automate your document processing with advanced content detection.
 
 ## Demo
 
-YOUR DEMO DESCRIPTION GOES HERE
+1. Upload any document as PDF
+2. Show detected fields
 
 ## Setup
 
-YOUR SETUP DESCRIPTION GOES HERE
+Copy the `intellix-connector` block from the `axonivy-intellix-connetor/config/variables.yaml` into a project within your workspaces:
+
+set your custom value to `host`, `username`, `password` and `msName`
+
