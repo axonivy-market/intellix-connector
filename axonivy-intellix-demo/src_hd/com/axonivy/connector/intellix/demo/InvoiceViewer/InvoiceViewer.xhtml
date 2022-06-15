@@ -16,6 +16,20 @@
           <p:link id="doclink" href="#{ivy.html.fileref(data.invoice.file)}"
             value="#{data.invoice.file.name}" />
         </h:panelGrid>
+        
+        <br />
+        <h:panelGrid columns="2" rendered="#{data.invoice.file ne null}">
+          <p:outputLabel value="Detected Fields: #{data.invoice.indexed.indexData.field.size()}" />
+          <p:dataTable value="#{data.invoice.indexed.indexData.field}" var="field">
+            <p:column headerText="Name">
+              <p:outputLabel value="#{field.name}" />
+            </p:column>
+            <p:column headerText="Value">
+              <p:outputLabel value="#{field.value.get(0).getText()}" />
+            </p:column>
+          </p:dataTable>
+        </h:panelGrid>
+        
         <br />
         <h:panelGrid columns="2" width="100%"
           rendered="#{data.invoice.file ne null}">
