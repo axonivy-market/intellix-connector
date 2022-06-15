@@ -1,7 +1,7 @@
-# MY-PRODUCT-NAME
+# Axonivy Intellix
 
-[![CI Build](https://github.com/axonivy-market/REPO-NAME/actions/workflows/ci.yml/badge.svg)](https://github.com/axonivy-market/REPO-NAME/actions/workflows/ci.yml)
+[![CI Build](https://github.com/axonivy-market/axonivy-intellix/actions/workflows/ci.yml/badge.svg)](https://github.com/axonivy-market/axonivy-intellix/actions/workflows/ci.yml)
 
-"YOUR SHORT DESCRIPTION GOES HERE"
+"Your scanned documents on stereoids, initiating new processes with auto-recognized data."
 
-Read our [documentation](MY-PRODUCT-NAME-product/README.md).
+Read our [documentation](axonivy-intellix-product/README.md).
