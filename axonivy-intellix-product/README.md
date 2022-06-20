@@ -1,15 +1,21 @@
 # Intellix Connector
 
-Connector to automate your document processing with advanced content detection.
+The Axon Ivy IDP (Intelligent Document Processing) module efficiently and easily extracts and classifies your documents in any business process. This connector:
+
+- Is based on the Intelligent Indexing component of DocuWare.
+- Recognizes the content of documents such as invoices without prior learning
+- Requires an additional, paid license key
+- Supports you with an easy-to-copy demo implementation to reduce your integration effort.
+
 
 ## Demo
 
-1. Upload any document as PDF
-2. Show detected fields
+1. Upload any document as PDF ![upload](images/uploadLocalFile.png)
+2. Show detected fields ![fields](images/detectedFields.png)
 
 ## Setup
 
-Copy the `intellix-connector` block from the `axonivy-intellix-connetor/config/variables.yaml` into a project within your workspaces:
-
-set your custom value to `host`, `username`, `password` and `msName`
+1. Order an intellix instance via <a href="mailto:info@axonivy.com">info@axonivy.com</a>
+2. Copy the `intellix-connector` block from the `axonivy-intellix-connetor/config/variables.yaml` into a project within your workspaces:
+3. set your custom variable value to `host`, `username`, `password` and `msName` with the copied `variables.yaml`
 
