@@ -2,7 +2,7 @@
 
 The Axon Ivy IDP (Intelligent Document Processing) module efficiently and easily extracts and classifies your documents in any business process. This connector:
 
-- Is based on the Intelligent Indexing component of DocuWare.
+- Is based on the [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing) component of DocuWare.
 - Recognizes the content of documents such as invoices without prior learning
 - Requires an additional, paid license key
 - Supports you with an easy-to-copy demo implementation to reduce your integration effort.
