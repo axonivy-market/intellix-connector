@@ -33,6 +33,7 @@ ix0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 ix0 f0 81 49 30 30 -26 17 #rect
+ix0 f0 res:/webContent/logos/intellix.png?small #fDecoratorIcon
 ix0 f1 337 49 30 30 0 15 #rect
 ix0 f3 clientId a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd #txt
 ix0 f3 path documents #txt

@@ -2,6 +2,7 @@ RestClients:
   intellix:
     UUID: a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd
     Url: https://{host}/
+    Icon: res:/webContent/logos/intellix.png
     Features:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
     - org.glassfish.jersey.media.multipart.MultiPartFeature
