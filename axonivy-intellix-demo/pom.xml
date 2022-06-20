@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.intellix</groupId>
   <artifactId>axonivy-intellix-demo</artifactId>
-  <version>9.3.3-SNAPSHOT</version>
+  <version>9.3.4-SNAPSHOT</version>
   <packaging>iar</packaging>
   <dependencies>
     <dependency>
