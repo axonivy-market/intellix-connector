@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type = "text/xsl" href = "/Content/standard.xslt"?>
+<Document xmlns:s="http://dev.docuware.com/schema/public/services" xmlns:c="http://dev.docuware.com/settings/common" Id="000008af0000005b9de5053a13fd50a0c5004a43a1face495822acc8" ModelspaceIdentifier="2223" CreatedAt="2022-06-21T07:04:15.93"
+  xmlns="http://dev.docuware.com/public/services/intellix">
+  <IndexData ElapsedTimeOnIntellix="838">
+    <Field Name="Amount" Confidence="Yellow">
+      <Value Trust="0.594" Generator="Combiner">
+        <Decimal>1257.64</Decimal>
+        <CoordinateReference L="9029" T="9149" W="822" H="194" />
+      </Value>
+      <Value Trust="0.06" Generator="Combiner">
+        <Decimal>173.47</Decimal>
+        <CoordinateReference L="6864" T="8630" W="538" H="196" />
+      </Value>
+      <Value Trust="0.03" Generator="Combiner">
+        <Decimal>1209.00</Decimal>
+        <CoordinateReference L="7576" T="7140" W="822" H="194" />
+      </Value>
+      <Value Trust="0.03" Generator="Combiner">
+        <Decimal>48.64</Decimal>
+        <CoordinateReference L="9338" T="7893" W="513" H="194" />
+      </Value>
+      <Value Trust="0.03" Generator="Combiner">
+        <Decimal>1084.17</Decimal>
+        <CoordinateReference L="3814" T="8379" W="684" H="196" />
+      </Value>
+      <Value Trust="0.03" Generator="Combiner">
+        <Decimal>16.00</Decimal>
+        <CoordinateReference L="4038" T="8630" W="440" H="196" />
+      </Value>
+    </Field>
+    <Field Name="CurrencySymbol" Confidence="Yellow">
+      <Value Trust="0.6" />
+      <Value Trust="0.3" Generator="Combiner">
+        <Text>EUR</Text>
+        <CoordinateReference L="8005" T="6077" W="370" H="196" />
+      </Value>
+    </Field>
+    <Field Name="CustomText1" Confidence="Red">
+      <Value Trust="0.264" Generator="Combiner">
+        <Text>Artikel-Nr.</Text>
+        <CoordinateReference L="851" T="6077" W="779" H="196" />
+      </Value>
+    </Field>
+    <Field Name="CustomerNumber" Confidence="Yellow">
+      <Value Trust="0.6333333333333333" Generator="Combiner">
+        <Text>31387902</Text>
+        <CoordinateReference L="8221" T="3602" W="682" H="172" />
+      </Value>
+    </Field>
+    <Field Name="Date" Confidence="Yellow">
+      <Value Trust="0.6204" Generator="Combiner">
+        <Date>2020-10-26</Date>
+        <CoordinateReference L="9118" T="2752" W="768" H="172" />
+      </Value>
+    </Field>
+    <Field Name="DocType" Confidence="Yellow">
+      <Value Trust="0.6666666666666666" Generator="Combiner">
+        <Text>Invoice_In</Text>
+      </Value>
+      <Value Trust="0.15" Generator="Combiner">
+        <Text>Delivery_In</Text>
+        <CoordinateReference L="6464" T="3319" W="827" H="172" />
+      </Value>
+    </Field>
+    <Field Name="DocumentNumber" Confidence="Yellow">
+      <Value Trust="0.627" Generator="Combiner">
+        <Text>471984591</Text>
+        <CoordinateReference L="8221" T="2752" W="768" H="172" />
+      </Value>
+      <Value Trust="0.3" Generator="Combiner">
+        <Text>377727297</Text>
+        <CoordinateReference L="8221" T="3319" W="768" H="172" />
+      </Value>
+      <Value Trust="0.09" Generator="Combiner">
+        <Text>272862008</Text>
+        <CoordinateReference L="8221" T="3036" W="768" H="172" />
+      </Value>
+    </Field>
+    <Field Name="Email" Confidence="Yellow">
+      <Value Trust="0.6333333333333333" Generator="Combiner">
+        <Text>mail@alternate.de</Text>
+        <CoordinateReference L="2584" T="15385" W="1060" H="182" />
+      </Value>
+    </Field>
+    <Field Name="IBAN" Confidence="Yellow">
+      <Value Trust="0.6" />
+      <Value Trust="0.3" Generator="Combiner">
+        <Text>DE35 5135 0025 0200 6431 26</Text>
+        <CoordinateReference L="8645" T="15612" W="1813" H="182" />
+      </Value>
+      <Value Trust="0.3" Generator="Combiner">
+        <Text>DE14 5138 0040 0880 8910 00</Text>
+        <CoordinateReference L="8920" T="15159" W="1814" H="182" />
+      </Value>
+    </Field>
+    <Field Name="Recipient" Confidence="Yellow">
+      <Value Trust="0.62" Generator="Combiner">
+        <Text>Christoph Weidling</Text>
+        <CoordinateReference L="850" T="2612" W="2063" H="274" />
+      </Value>
+      <Value Trust="0.03" Generator="Combiner">
+        <Text>ALTERNATE GmbH</Text>
+        <CoordinateReference L="851" T="2119" W="1181" H="182" />
+      </Value>
+    </Field>
+    <Field Name="Sender" Confidence="Yellow">
+      <Value Trust="0.62" Generator="Combiner">
+        <Text>ALTERNATE GmbH</Text>
+        <CoordinateReference L="851" T="2119" W="1181" H="182" />
+      </Value>
+    </Field>
+    <Field Name="URL" Confidence="Yellow">
+      <Value Trust="0.6" />
+      <Value Trust="0.3" Generator="Combiner">
+        <Text>www.alternate.de</Text>
+        <CoordinateReference L="3797" T="15385" W="1007" H="182" />
+      </Value>
+      <Value Trust="0.3" Generator="Combiner">
+        <Text>www.alternate.de/</Text>
+        <CoordinateReference L="7098" T="10639" W="1404" H="196" />
+      </Value>
+    </Field>
+    <Field Name="VatId" Confidence="Yellow">
+      <Value Trust="0.6333333333333333" Generator="Combiner">
+        <Text>DE 112 595 008</Text>
+        <CoordinateReference L="1488" T="15385" W="943" H="182" />
+      </Value>
+    </Field>
+    <Field Name="Company" Confidence="Yellow">
+      <Value Trust="0.62" Generator="Combiner">
+        <Text>ALTERNATE GmbH</Text>
+        <CoordinateReference L="851" T="2119" W="1181" H="182" />
+      </Value>
+    </Field>
+  </IndexData>
+  <DocumentInfo>
+    <PageInfo Language="de-DE" PageWidthInTwips="11900" PageHeightInTwips="16840" />
+  </DocumentInfo>
+  <s:Links>
+    <s:Link rel="self" href="/Documents/000008af0000005b9de5053a13fd50a0c5004a43a1face495822acc8" />
+    <s:Link rel="edit" href="/Documents/000008af0000005b9de5053a13fd50a0c5004a43a1face495822acc8/Edit" />
+    <s:Link rel="indexData" href="/Documents/000008af0000005b9de5053a13fd50a0c5004a43a1face495822acc8/IndexData" />
+  </s:Links>
+</Document>
