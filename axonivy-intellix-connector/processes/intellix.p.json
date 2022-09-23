@@ -1,0 +1,75 @@
+{
+  "format" : "9.4.20",
+  "id" : "18166227E0841472",
+  "data" : "com.axonivy.connector.intellix.intellixData",
+  "kind" : "CALLABLE_SUB",
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "identify(File)",
+      "config" : {
+        "callSignature" : "call",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "java.io.File", "desc" : "The file (PDF) to process" }
+          ],
+          "map" : {
+            "out.file" : "param.file"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "indexData", "type" : "com.docuware.dev._public.services.intellix.IndexData", "desc" : "Identified fields from the given file" }
+          ],
+          "map" : {
+            "result.indexData" : "in.indexData"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "labelOffset" : { "x" : 20, "y" : 37 },
+        "icon" : "res:/webContent/logos/intellix.png?small"
+      },
+      "connect" : { "id" : "f4", "to" : "f3" }
+    }, {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "RestClientCall",
+      "name" : "intellix",
+      "config" : {
+        "clientId" : "a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd",
+        "method" : "POST",
+        "queryParams" : {
+          "extract" : "true"
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyInputType" : "FORM",
+        "responseCode" : "ivy.log.info(\"recognized field count: \"+result.indexData.getField().size());",
+        "bodyForm" : {
+          "file" : "in.file",
+          "msName" : "ivy.var.get(\"intellix-connector.msName\")"
+        },
+        "path" : "documents",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.indexData" : "result.indexData;"
+        },
+        "templateParams" : {
+          "host" : ""
+        },
+        "resultType" : "com.docuware.dev._public.services.intellix.FeedbackMessage",
+        "bodyMediaType" : "multipart/form-data"
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    } ]
+}

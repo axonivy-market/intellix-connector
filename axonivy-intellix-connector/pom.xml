@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.intellix</groupId>
   <artifactId>axonivy-intellix-connector</artifactId>
-  <version>9.3.4-SNAPSHOT</version>
+  <version>9.4.0-SNAPSHOT</version>
   <packaging>iar</packaging>
   <build>
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
-        <version>9.3.1</version>
+        <version>9.4.1</version>
         <extensions>true</extensions>
       </plugin>
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
@@ -32,12 +32,11 @@
             <source>src/xmlschema</source>
           </sources>
           <arguments>
-          <argument>-XautoNameResolution</argument>
+            <argument>-XautoNameResolution</argument>
           </arguments>
           <outputDirectory>src_generated</outputDirectory>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 </project>
