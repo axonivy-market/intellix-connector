@@ -1,8 +1,10 @@
 {
-  "format" : "9.4.20",
+  "format" : "10.0.0",
   "id" : "181666A7D6D4BAF2",
-  "data" : "com.axonivy.connector.intellix.demo.InvoiceViewer.InvoiceViewerData",
   "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.connector.intellix.demo.InvoiceViewer.InvoiceViewerData"
+  },
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",

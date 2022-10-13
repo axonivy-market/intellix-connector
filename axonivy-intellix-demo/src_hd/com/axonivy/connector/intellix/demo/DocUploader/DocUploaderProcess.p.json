@@ -1,8 +1,10 @@
 {
-  "format" : "9.4.20",
+  "format" : "10.0.0",
   "id" : "181662ECBD4C4BD8",
-  "data" : "com.axonivy.connector.intellix.demo.DocUploader.DocUploaderData",
   "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.connector.intellix.demo.DocUploader.DocUploaderData"
+  },
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",
