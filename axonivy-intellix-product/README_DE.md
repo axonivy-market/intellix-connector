@@ -1,11 +1,12 @@
-# Intellix Connector
+# Intelligent Document Processing mit Axon Ivy
 
-The Axon Ivy IDP (Intelligent Document Processing) module efficiently and easily extracts and classifies your documents in any business process. This connector:
+Der **Axon Ivy IDP (Intelligent Document Processing) Konnektor** extrahiert effizient und einfach spezifische Werte aus deinen Dokumenten.
 
-- Is based on the [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing) component of DocuWare.
-- Recognizes the content of documents such as invoices without prior training
-- Requires an additional, paid license key
-- Includes a customizable starter kit to help you quickly integrate it into your Axon Ivy processes
+Dieser Konnektor:
+- Basiert auf der [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing Komponente von DocuWare.
+- Erkennt den Inhalt von Dokumenten - beispielsweise den Rechnungsbetrag in Rechnungen - ohne vorheriges Training.
+- Benötigt einen zusätzlichen, kostenpflichtigen Lizenzschlüssel.
+- Stellt Open-Source-Code bereit, der dich dabei unterstützt, diese Funktion schnell in deine Axon Ivy Prozesse zu integrieren und anzupassen
 
 
 ## Demo
