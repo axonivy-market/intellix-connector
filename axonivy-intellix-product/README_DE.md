@@ -3,7 +3,7 @@
 Der **Axon Ivy IDP (Intelligent Document Processing) Konnektor** extrahiert effizient und einfach spezifische Werte aus deinen Dokumenten.
 
 Dieser Konnektor:
-- Basiert auf der [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing Komponente von DocuWare.
+- Basiert auf der [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing) Komponente von DocuWare.
 - Erkennt den Inhalt von Dokumenten - beispielsweise den Rechnungsbetrag in Rechnungen - ohne vorheriges Training.
 - Benötigt einen zusätzlichen, kostenpflichtigen Lizenzschlüssel.
 - Stellt Open-Source-Code bereit, der dich dabei unterstützt, diese Funktion schnell in deine Axon Ivy Prozesse zu integrieren und anzupassen
