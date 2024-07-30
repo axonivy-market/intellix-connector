@@ -21,7 +21,7 @@ import ch.ivyteam.ivy.rest.client.RestClient.Builder;
 import ch.ivyteam.ivy.rest.client.RestClients;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 
-@IvyProcessTest
+@IvyProcessTest(enableWebServer = true)
 public class IntellixProcessTest {
 
   private static final BpmProcess testee = BpmProcess.path("intellixDemo");
