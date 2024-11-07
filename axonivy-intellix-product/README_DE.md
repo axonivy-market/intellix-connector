@@ -1,23 +1,22 @@
-# Intelligent Document Processing mit Axon Ivy
+# Intelligent Indexing
 
-Der **Axon Ivy IDP (Intelligent Document Processing) Konnektor** extrahiert effizient und einfach spezifische Werte aus deinen Dokumenten.
+Mit diesem Konnektor für DocuWare Intelligent Indexing kannst du effizient und einfach in jedem Geschäftsprozess Schlagwörter in deinen Dokumenten extrahieren. Dieser Konnektor:
 
-Dieser Konnektor:
-- Basiert auf der [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing) Komponente von DocuWare.
-- Erkennt den Inhalt von Dokumenten - beispielsweise den Rechnungsbetrag in Rechnungen - ohne vorheriges Training.
-- Benötigt einen zusätzlichen, kostenpflichtigen Lizenzschlüssel.
-- Stellt Open-Source-Code bereit, der dich dabei unterstützt, diese Funktion schnell in deine Axon Ivy Prozesse zu integrieren und anzupassen
 
+- basiert auf der [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing)-Komponente von DocuWare.
+- erkennt den Inhalt von Dokumenten wie Rechnungen ohne vorheriges Training.
+- erfordert einen zusätzlichen, kostenpflichtigen Lizenzschlüssel.
+- enthält ein anpassbares Starterkit, das dir hilft, es schnell in deine Axon Ivy-Prozesse zu integrieren.
 
 ## Demo
 
-1. Upload any document as PDF ![upload](images/uploadLocalFile.png)
-2. Show detected fields ![fields](images/detectedFields.png)
+1. Lade ein beliebiges Dokument als PDF hoch   
+    ![hochladen](images/uploadLocalFile.png)   
+3. Zeige die erkannten Felder an   
+    ![felder](images/detectedFields.png)
 
-## Setup
+## Einrichtung
 
-1. Order an intellix instance via <a href="mailto:info@axonivy.com">info@axonivy.com</a>
-2. Copy the `intellix-connector` block from the `axonivy-intellix-connetor/config/variables.yaml` into a project within your workspaces:
-3. set your custom variable value to `host`, `username`, `password` and `msName` with the copied `variables.yaml`
-
-
+1. Bestelle eine Intellix-Instanz über <a href="mailto:info@axonivy.com">info@axonivy.com</a>
+2. Kopiere den Block `intellix-connector` aus der Datei `axonivy-intellix-connector/config/variables.yaml` in ein Projekt innerhalb deiner Arbeitsbereiche.
+3. Setze deinen benutzerdefinierten Variablenwert für `host`, `username`, `password` und `msName` in der kopierten `variables.yaml`.
