@@ -1,11 +1,11 @@
 # Intellix Connector
 
-The Axon Ivy IDP (Intelligent Document Processing) module efficiently and easily extracts and classifies your documents in any business process. This connector:
+With this connector to DocuWare Intelligent Indexing you can efficiently and easily extract keywords in your documents in any business process. This connector:
 
-- Is based on the [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing) component of DocuWare.
-- Recognizes the content of documents such as invoices without prior training
-- Requires an additional, paid license key
-- Includes a customizable starter kit to help you quickly integrate it into your Axon Ivy processes
+- is based on the [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing) component of DocuWare.
+- recognizes the content of documents such as invoices without prior training
+- requires an additional, paid license key
+- includes a customizable starter kit to help you quickly integrate it into your Axon Ivy processes
 
 
 ## Demo
@@ -15,7 +15,7 @@ The Axon Ivy IDP (Intelligent Document Processing) module efficiently and easily
 
 ## Setup
 
-1. Order an intellix instance via <a href="mailto:info@axonivy.com">info@axonivy.com</a>
+1. Order an Intellix Instance via <a href="mailto:info@axonivy.com">info@axonivy.com</a>
 2. Copy the `intellix-connector` block from the `axonivy-intellix-connetor/config/variables.yaml` into a project within your workspaces:
-3. set your custom variable value to `host`, `username`, `password` and `msName` with the copied `variables.yaml`
+3. Set your custom variable value to `host`, `username`, `password` and `msName` with the copied `variables.yaml`
 
