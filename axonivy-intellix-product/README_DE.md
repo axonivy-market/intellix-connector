@@ -1,12 +1,12 @@
 # Intelligent Indexing
 
-Mit diesem Konnektor für DocuWare Intelligent Indexing kannst du effizient und einfach in jedem Geschäftsprozess Schlagwörter in deinen Dokumenten extrahieren. Dieser Konnektor:
+Der Intelligent Indexing Konnektor integriert erweiterte Funktionen zur Dokumentenindexierung in die Workflow-Orchestrierung. Speziell für Umgebungen entwickelt, in denen Axon Ivy mit DocuWare kombiniert wird, um dokumentenbasierte Geschäftsprozesse zu verwalten, ermöglicht dieser Konnektor eine effiziente und einfache Extraktion von Schlüsselwörtern. Dieser Konnektor:
 
 
 - basiert auf der [Intelligent Indexing](https://start.docuware.com/docuware-intelligent-indexing)-Komponente von DocuWare.
 - erkennt den Inhalt von Dokumenten wie Rechnungen ohne vorheriges Training.
-- erfordert einen zusätzlichen, kostenpflichtigen Lizenzschlüssel.
-- enthält ein anpassbares Starterkit, das dir hilft, es schnell in deine Axon Ivy-Prozesse zu integrieren.
+- enthält ein anpassbares Starter-Kit für die schnelle Integration in Ihre Axon Ivy-Prozesse.
+- ist ausschließlich für Szenarien verfügbar, in denen DocuWare mit Axon Ivy integriert wird, um dokumentenbasierte Workflows zu orchestrieren, und wird nicht als Standalone-Dienst angeboten.
 
 ## Demo
 
