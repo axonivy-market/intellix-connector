@@ -1,10 +1,11 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
 # == Variables ==
 Variables:
   intellix-connector:
     host:
-    username: 
+    username:
     # [password]
-    password: 
+    password:
     msName:
     
     # The Logon URL will be automatically determined.

@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "1816266FC8F333CC",
   "config" : {
     "data" : "com.axonivy.connector.intellix.demo.Data"
@@ -9,15 +9,18 @@
       "type" : "RequestStart",
       "name" : "uploadSampleInvoice.ivp",
       "config" : {
-        "callSignature" : "uploadSampleInvoice",
-        "outLink" : "uploadSampleInvoice.ivp",
-        "tags" : "demo"
+        "signature" : "uploadSampleInvoice"
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
         "labelOffset" : { "x" : 21, "y" : 40 }
       },
-      "connect" : { "id" : "f7", "to" : "f6" }
+      "connect" : [
+        { "id" : "f7", "to" : "f6" }
+      ]
     }, {
       "id" : "f1",
       "type" : "TaskEnd",
@@ -42,7 +45,9 @@
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
       },
-      "connect" : { "id" : "f4", "to" : "f3" }
+      "connect" : [
+        { "id" : "f4", "to" : "f3" }
+      ]
     }, {
       "id" : "f5",
       "type" : "Script",
@@ -68,54 +73,55 @@
       },
       "visual" : {
         "at" : { "x" : 384, "y" : 192 },
-        "size" : { "width" : 128, "height" : 60 }
+        "size" : { "width" : 128 }
       },
-      "connect" : { "id" : "f14", "to" : "f13" }
+      "connect" : [
+        { "id" : "f14", "to" : "f13" }
+      ]
     }, {
       "id" : "f3",
       "type" : "SubProcessCall",
       "name" : "intellix",
       "config" : {
         "processCall" : "intellix:call(java.io.File)",
+        "call" : {
+          "map" : {
+            "param.file" : "in.file.getJavaFile()"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
             "out.indexed.indexData" : "result.indexData"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "file", "type" : "java.io.File" }
-          ],
-          "map" : {
-            "param.file" : "in.file.getJavaFile()"
           }
         }
       },
       "visual" : {
         "at" : { "x" : 384, "y" : 64 }
       },
-      "connect" : { "id" : "f8", "to" : "f5" }
+      "connect" : [
+        { "id" : "f8", "to" : "f5" }
+      ]
     }, {
       "id" : "f9",
       "type" : "RequestStart",
       "name" : "uploadInvoice.ivp",
       "config" : {
-        "callSignature" : "uploadInvoice",
-        "outLink" : "uploadInvoice.ivp"
+        "signature" : "uploadInvoice"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 192 },
-        "labelOffset" : { "x" : 9, "y" : 35 }
+        "labelOffset" : { "x" : 9 }
       },
-      "connect" : { "id" : "f11", "to" : "f10" }
+      "connect" : [
+        { "id" : "f11", "to" : "f10" }
+      ]
     }, {
       "id" : "f10",
       "type" : "DialogCall",
       "name" : "DocUploader",
       "config" : {
-        "dialogId" : "com.axonivy.connector.intellix.demo.DocUploader",
-        "startMethod" : "start()",
+        "dialog" : "com.axonivy.connector.intellix.demo.DocUploader:start()",
         "output" : {
           "map" : {
             "out" : "in",
@@ -126,18 +132,16 @@
       "visual" : {
         "at" : { "x" : 224, "y" : 192 }
       },
-      "connect" : { "id" : "f12", "to" : "f3" }
+      "connect" : [
+        { "id" : "f12", "to" : "f3" }
+      ]
     }, {
       "id" : "f13",
       "type" : "DialogCall",
       "name" : "DocumentViewer",
       "config" : {
-        "dialogId" : "com.axonivy.connector.intellix.demo.InvoiceViewer",
-        "startMethod" : "start(com.axonivy.connector.intellix.demo.Data)",
+        "dialog" : "com.axonivy.connector.intellix.demo.InvoiceViewer:start(com.axonivy.connector.intellix.demo.Data)",
         "call" : {
-          "params" : [
-            { "name" : "invoice", "type" : "com.axonivy.connector.intellix.demo.Data" }
-          ],
           "map" : {
             "param.invoice" : "in"
           }
@@ -146,6 +150,8 @@
       "visual" : {
         "at" : { "x" : 384, "y" : 288 }
       },
-      "connect" : { "id" : "f2", "to" : "f1" }
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
     } ]
 }
