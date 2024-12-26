@@ -2,11 +2,11 @@
 # == Variables ==
 Variables:
   intellix-connector:
-    host:
-    username:
+    host: ''
+    username: ''
     # [password]
-    password:
-    msName:
+    password: ''
+    msName: ''
     
     # The Logon URL will be automatically determined.
     # If this variable is set (not-empty), this URL

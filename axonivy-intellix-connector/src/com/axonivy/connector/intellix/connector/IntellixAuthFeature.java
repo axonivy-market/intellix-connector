@@ -202,7 +202,8 @@ public class IntellixAuthFeature implements Feature, ClientRequestFilter, Client
 		public static final String DW_COOKIES_CACHE_ID = "cookies";
 		public static final String DW_COOKIES_CACHE_GROUP_ID = "com.docuware.cookies";
 		public static final int DW_COOKIES_EXPIRY_SECONDS = 86400;
-                private final Map<String, NewCookie> cookies;
+		@SuppressWarnings("unused")
+		private final Map<String, NewCookie> cookies;
 
 
 		private DocuWareCookies(Map<String, NewCookie> cookies) {

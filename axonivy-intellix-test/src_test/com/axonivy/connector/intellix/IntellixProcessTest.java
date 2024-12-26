@@ -18,6 +18,7 @@ import ch.ivyteam.ivy.bpm.engine.client.element.BpmProcess;
 import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.rest.client.RestClient;
 import ch.ivyteam.ivy.rest.client.RestClient.Builder;
+import ch.ivyteam.ivy.rest.client.RestClientFeature;
 import ch.ivyteam.ivy.rest.client.RestClients;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 
@@ -53,11 +54,11 @@ public class IntellixProcessTest {
       .description(restClient.description())
       .properties(restClient.properties());
 
-    for (String feature : restClient.features()) {
-      if (feature.contains(IntellixAuthFeature.class.getName())) {
+    for (RestClientFeature feature : restClient.features()) {
+      if (feature.clazz().contains(IntellixAuthFeature.class.getName())) {
         continue; // do not auth
       }
-      builder.feature(feature);
+      builder.feature(feature.clazz());
     }
     builder.feature(CsrfHeaderFeature.class.getName()); // call backend
 
