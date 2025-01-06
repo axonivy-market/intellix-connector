@@ -1,4 +1,0 @@
-InvoiceViewerData #class
-com.axonivy.connector.intellix.demo.InvoiceViewer #namespace
-invoice com.axonivy.connector.intellix.demo.Data #field
-invoice PERSISTENT #fieldModifier
