@@ -10,8 +10,10 @@ The Intelligent Indexing Connector integrates advanced document indexing capabil
 
 ## Demo
 
-1. Upload any document as PDF ![upload](images/uploadLocalFile.png)
-2. Show detected fields ![fields](images/detectedFields.png)
+1. Upload any document as PDF
+    ![upload](images/uploadLocalFile.png)
+2. Show detected fields
+    ![fields](images/detectedFields.png)
 
 ## Setup
 
