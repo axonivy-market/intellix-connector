@@ -12,7 +12,7 @@ Der Intelligent Indexing Konnektor integriert erweiterte Funktionen zur Dokument
 
 1. Lade ein beliebiges Dokument als PDF hoch   
     ![hochladen](images/uploadLocalFile.png)   
-3. Zeige die erkannten Felder an   
+2. Zeige die erkannten Felder an   
     ![felder](images/detectedFields.png)
 
 ## Setup
