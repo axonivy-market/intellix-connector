@@ -12,10 +12,10 @@ Der Intelligent Indexing Konnektor integriert erweiterte Funktionen zur Dokument
 
 1. Lade ein beliebiges Dokument als PDF hoch   
     ![hochladen](images/uploadLocalFile.png)   
-3. Zeige die erkannten Felder an   
+2. Zeige die erkannten Felder an   
     ![felder](images/detectedFields.png)
 
-## Einrichtung
+## Setup
 
 1. Bestelle eine Intellix-Instanz über <a href="mailto:info@axonivy.com">info@axonivy.com</a>
 2. Kopiere den Block `intellix-connector` aus der Datei `axonivy-intellix-connector/config/variables.yaml` in ein Projekt innerhalb deiner Arbeitsbereiche.
