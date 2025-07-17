@@ -18,5 +18,8 @@ Der Intelligent Indexing Konnektor integriert erweiterte Funktionen zur Dokument
 ## Setup
 
 1. Bestelle eine Intellix-Instanz über <a href="mailto:info@axonivy.com">info@axonivy.com</a>
-2. Kopiere den Block `intellix-connector` aus der Datei `axonivy-intellix-connector/config/variables.yaml` in ein Projekt innerhalb deiner Arbeitsbereiche.
+2. Kopiere den Block `intellixConnector` aus der Datei `axonivy-intellix-connector/config/variables.yaml` in ein Projekt innerhalb deiner Arbeitsbereiche.
 3. Setze deinen benutzerdefinierten Variablenwert für `host`, `username`, `password` und `msName` in der kopierten `variables.yaml`.
+
+> [!NOTE]
+> Der Variablenpfad `intellix-connector` wird umbenannt in `intellixConnector` von 13.
