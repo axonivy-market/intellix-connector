@@ -8,10 +8,10 @@ RestClients:
     - org.glassfish.jersey.media.multipart.MultiPartFeature
     - com.axonivy.connector.intellix.connector.IntellixAuthFeature
     Properties:
-      PATH.host: ${ivy.var.intellix-connector.host}
-      UserName: ${ivy.var.intellix-connector.username}
-      Password: ${ivy.var.intellix-connector.password}
-      LogonUrl: ${ivy.var.intellix-connector.logonurl}
+      PATH.host: ${ivy.var.intellixConnector.host}
+      UserName: ${ivy.var.intellixConnector.username}
+      Password: ${ivy.var.intellixConnector.password}
+      LogonUrl: ${ivy.var.intellixConnector.logonurl}
       HostId: notMyHost
       com.sun.jersey.impl.client.httpclient.handleCookies: 'true'
       http.protocol.handle-redirects: 'true'
