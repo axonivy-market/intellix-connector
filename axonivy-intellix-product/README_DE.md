@@ -1,37 +1,37 @@
-# Intellix Anschluss
+# Intellix Connector
 
-Die Intelligente #Erschließung Anschluss integriert fortgeschrittene Dokument
-#Erschließung Fähigkeiten hinein workflow #Instrumentation. Speziell #entworfen
-für Umwelten #wo ist verquickt #Axon #Ivy mit DocuWare zu fertigbringen
-Dokument-basisbezogene Geschäft Arbeitsgänge, dieser Anschluss erlaubt du zu
-gewinnen genügend Stichwörter und sicher. Dieser Anschluss:
+Der Intelligent Indexing Connector integriert erweiterte Funktionen zur
+Dokumentenindizierung in die Workflow-Orchestrierung. Dieser Connector wurde
+speziell für Umgebungen entwickelt, in denen Axon Ivy mit DocuWare kombiniert
+wird, um dokumentbasierte Geschäftsprozesse zu verwalten. Mit ihm können Sie
+Schlüsselwörter effizient und einfach extrahieren. Dieser Connector:
 
-- Ist gegründet weiter das [Intelligente
-  #Erschließung](https://start.docuware.com/docuware-intelligent-indexing)
-  Komponente von DocuWare.
-- Erkennt den Inhalt Dokumente wie Rechnungen ohne vorherig Ertüchtigung.
-- Schließt ein ein customizable Starter Set zu helfen dir schnell integrieren es
-  hinein eure #Axon #Ivy verarbeitet.
-- Ist exklusiv verfügbar für Szenarios #wo DocuWare sind integriert mit #Axon
-  Efeu zu #orchestrieren Dokument-basisbezogen workflows und ist nicht da einen
-  Stand angeboten-#allein Bedienung.
+- basiert auf der Komponente [Intelligente
+  Indizierung](https://start.docuware.com/docuware-intelligent-indexing) von
+  DocuWare.
+- erkennt den Inhalt von Dokumenten wie Rechnungen ohne vorheriges Training.
+- Enthält ein anpassbares Starter-Kit, mit dem Sie es schnell in Ihre Axon
+  Ivy-Prozesse integrieren können.
+- ist ausschließlich für Szenarien verfügbar, in denen DocuWare in Axon Ivy
+  integriert ist, um dokumentbasierte Workflows zu orchestrieren, und wird nicht
+  als eigenständiger Dienst angeboten.
 
 ## Demo
 
-1. #Hochladen wie irgendwelches Dokument #PDF\
-   ![#Hochladen](images/uploadLocalFile.png)
-2. Vorstellung fand heraus Felder\
-   ![#Auffangen](images/detectedFields.png)
+1. Laden Sie jedes Dokument als PDF hoch.\
+   ![upload](images/uploadLocalFile.png)
+2. Erkannte Felder anzeigen\
+   ![Felder](images/detectedFields.png)
 
 ## Einrichtung
 
-1. Bestell ein Intellix Instanz via
+1. Bestellen Sie eine Intellix-Instanz über
    <a href="mailto:info@axonivy.com">info@axonivy.com</a>
-2. Kopier das `intellixConnector` Block von den
-   `axonivy-intellix-connetor/config/Variablen.yaml` Hinein ein Projekt
-   innerhalb eure Arbeitsräume:
-3. Gesetzt eure #benutzerdefiniert Variable Wert zu `Gastgeber`, `Benutzername`,
-   `Passwort` und `msName` mit das kopiert `Variablen.yaml`
+2. Kopieren Sie den Block „ `intellixConnector` ” aus der Datei „
+   `axonivy-intellix-connetor/config/variables.yaml` ” in ein Projekt innerhalb
+   Ihrer Arbeitsbereiche:
+3. Setzen Sie Ihren benutzerdefinierten Variablenwert auf `host`, `username`,
+   `password` und `msName` mit den kopierten `variables.yaml`
 
-> [!BEACHTE] Den variablen Pfad `intellix-Anschluss` ist #umbenennen zu
-> `intellixConnector` von 13.
+> [!HINWEIS] Der variable Pfad `intellix-connector` wurde ab Version 13 in
+> `intellixConnector` umbenannt.
