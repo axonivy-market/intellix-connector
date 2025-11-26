@@ -23,7 +23,7 @@ Schlüsselwörter effizient und einfach extrahieren. Dieser Connector:
 2. Erkannte Felder anzeigen\
    ![Felder](images/detectedFields.png)
 
-## Einrichtung
+## Setup
 
 1. Bestellen Sie eine Intellix-Instanz über
    <a href="mailto:info@axonivy.com">info@axonivy.com</a>
