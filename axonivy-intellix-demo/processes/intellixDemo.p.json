@@ -38,7 +38,7 @@
         "output" : {
           "code" : [
             "import com.axonivy.connector.intellix.FileLoaderUtil;",
-            "out.file = FileLoaderUtil.loadFromWebContent(\"sample/rechnung.pdf\");"
+            "out.file = FileLoaderUtil.loadFileFromCms(\"rechnung.pdf\", \"/sample/rechnung\");"
           ]
         }
       },
