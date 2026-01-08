@@ -7,14 +7,14 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>${project.name}-connector</module>
-    <module>${project.name}-demo</module>
-    <module>${project.name}-test</module>
-    <module>${project.name}-product</module>
+    <module>intellix-connector-connector</module>
+    <module>intellix-connector-demo</module>
+    <module>intellix-connector-test</module>
+    <module>intellix-connector-product</module>
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/intellix-connector.git</developerConnection>
     <tag>v10.0.7</tag>
   </scm>
 
