@@ -7,10 +7,10 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>intellix-connector-connector</module>
-    <module>intellix-connector-demo</module>
-    <module>intellix-connector-test</module>
-    <module>intellix-connector-product</module>
+    <module>axonivy-intellix-connector</module>
+    <module>axonivy-intellix-demo</module>
+    <module>axonivy-intellix-test</module>
+    <module>axonivy-intellix-product</module>
   </modules>
 
   <scm>
