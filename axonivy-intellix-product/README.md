@@ -18,7 +18,7 @@ The Intelligent Indexing Connector integrates advanced document indexing capabil
 ## Setup
 
 1. Order an Intellix Instance via <a href="mailto:info@axonivy.com">info@axonivy.com</a>
-2. Copy the `intellixConnector` block from the `axonivy-intellix-connetor/config/variables.yaml` into a project within your workspaces:
+2. Copy the `intellixConnector` block from the `axonivy-intellix-connector/config/variables.yaml` into a project within your workspaces:
 3. Set your custom variable value to `host`, `username`, `password` and `msName` with the copied `variables.yaml`
 
 > [!NOTE]
