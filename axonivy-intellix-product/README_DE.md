@@ -27,9 +27,9 @@ Schlüsselwörter effizient und einfach extrahieren. Dieser Connector:
 
 1. Bestellen Sie eine Intellix-Instanz über
    <a href="mailto:info@axonivy.com">info@axonivy.com</a>
-2. Kopieren Sie den Block „ `intellixConnector` ” aus der Datei „
-   `axonivy-intellix-connetor/config/variables.yaml` ” in ein Projekt innerhalb
-   Ihrer Arbeitsbereiche:
+2. Copy the `intellixConnector` block from the
+   `axonivy-intellix-connector/config/variables.yaml` into a project within your
+   workspaces:
 3. Setzen Sie Ihren benutzerdefinierten Variablenwert auf `host`, `username`,
    `password` und `msName` mit den kopierten `variables.yaml`
 
