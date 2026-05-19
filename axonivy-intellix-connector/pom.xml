@@ -74,7 +74,6 @@
           <arguments>
             <argument>-XautoNameResolution</argument>
           </arguments>
-          <outputDirectory>src_generated</outputDirectory>
         </configuration>
       </plugin>
     </plugins>
