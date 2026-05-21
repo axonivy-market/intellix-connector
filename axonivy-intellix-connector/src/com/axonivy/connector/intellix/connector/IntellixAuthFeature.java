@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.UUID;
 
 import javax.ws.rs.Priorities;
 import javax.ws.rs.client.ClientRequestContext;
@@ -24,7 +25,6 @@ import org.apache.commons.lang3.StringUtils;
 import ch.ivyteam.ivy.data.cache.IDataCacheEntry;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.rest.client.FeatureConfig;
-import ch.ivyteam.ivy.rest.client.internal.ExternalRestWebServiceCall;
 
 /**
  * Feature to make sure, that we have the DocuWare cookies.
@@ -38,6 +38,7 @@ public class IntellixAuthFeature implements Feature, ClientRequestFilter, Client
 	private static final String USERNAME_PROPERTY = "UserName";
 	private static final String PASSWORD_PROPERTY = "Password";
 	private static final String LOGONURL_PROPERTY = "LogonUrl";
+	private static final String PROPERTY_CLIENT_ID = "clientId";
 
 	@Override
 	public boolean configure(FeatureContext context) {
@@ -67,23 +68,15 @@ public class IntellixAuthFeature implements Feature, ClientRequestFilter, Client
 
 				String logonUrl = config.read(LOGONURL_PROPERTY).orElse(null);
 
+				// Cookie login approach maybe outdated since DocuWare change to oauth2 with token.
 				if(StringUtils.isBlank(logonUrl) || logonUrl.trim().equalsIgnoreCase("AUTO")) {
 					try {
-						// Note: this API is not public and will probably change in future Ivy versions.
-						ExternalRestWebServiceCall externalRestWebServiceCall = (ExternalRestWebServiceCall) reqContext.getProperty(ExternalRestWebServiceCall.class.getCanonicalName());
-						if(externalRestWebServiceCall != null) {
-							// String host = Ivy.var().get("docuware-connector.host");
-							String host = reqContext.getUri().getHost();
-
-							logonUrl = externalRestWebServiceCall.getWebTarget().resolveTemplate("host", host).path(ACCOUNT_LOGON_PATH).getUri().toString();
-						}
+						String host = reqContext.getUri().getHost();
+						UUID clientId = UUID.fromString(config.readMandatory(PROPERTY_CLIENT_ID));
+						logonUrl = Ivy.rest().client(clientId).resolveTemplate("host", host).path(ACCOUNT_LOGON_PATH).getUri().toString();
 					} catch (Throwable t) {
 						String message = String.format("Could not determine DocuWare target URL automatically, please set it in REST client property '%s'. Put there the same URL as used for the client.", LOGONURL_PROPERTY);
-						Ivy.log().error(message, t);
-						reqContext.abortWith(Response.status(Response.Status.PRECONDITION_FAILED)
-								.type(MediaType.TEXT_PLAIN)
-								.entity(message)
-								.build());
+						throw new IllegalStateException(message, t);
 					}
 				}
 
