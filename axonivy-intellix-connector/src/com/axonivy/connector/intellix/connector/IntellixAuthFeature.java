@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.UUID;
 
 import javax.ws.rs.Priorities;
 import javax.ws.rs.client.ClientRequestContext;
