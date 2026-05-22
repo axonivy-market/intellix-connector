@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.UUID;
 
 import javax.ws.rs.Priorities;
 import javax.ws.rs.client.ClientRequestContext;
@@ -38,7 +37,7 @@ public class IntellixAuthFeature implements Feature, ClientRequestFilter, Client
 	private static final String USERNAME_PROPERTY = "UserName";
 	private static final String PASSWORD_PROPERTY = "Password";
 	private static final String LOGONURL_PROPERTY = "LogonUrl";
-	private static final String PROPERTY_CLIENT_ID = "clientId";
+	private static final String INTELLIX_CLIENT_NAME = "intellix";
 
 	@Override
 	public boolean configure(FeatureContext context) {
@@ -72,8 +71,7 @@ public class IntellixAuthFeature implements Feature, ClientRequestFilter, Client
 				if(StringUtils.isBlank(logonUrl) || logonUrl.trim().equalsIgnoreCase("AUTO")) {
 					try {
 						String host = reqContext.getUri().getHost();
-						UUID clientId = UUID.fromString(config.readMandatory(PROPERTY_CLIENT_ID));
-						logonUrl = Ivy.rest().client(clientId).resolveTemplate("host", host).path(ACCOUNT_LOGON_PATH).getUri().toString();
+						logonUrl = Ivy.rest().client(INTELLIX_CLIENT_NAME).resolveTemplate("host", host).path(ACCOUNT_LOGON_PATH).getUri().toString();
 					} catch (Throwable t) {
 						String message = String.format("Could not determine DocuWare target URL automatically, please set it in REST client property '%s'. Put there the same URL as used for the client.", LOGONURL_PROPERTY);
 						throw new IllegalStateException(message, t);
