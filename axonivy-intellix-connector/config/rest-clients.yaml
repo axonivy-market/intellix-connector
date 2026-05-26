@@ -1,12 +1,13 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/rest-clients-1.json
 RestClients:
   intellix:
-    UUID: a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd
+    Name: intellix
     Url: https://{host}/
     Icon: res:/webContent/logos/intellix.png
     Features:
-    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
-    - org.glassfish.jersey.media.multipart.MultiPartFeature
-    - com.axonivy.connector.intellix.connector.IntellixAuthFeature
+      - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+      - org.glassfish.jersey.media.multipart.MultiPartFeature
+      - com.axonivy.connector.intellix.connector.IntellixAuthFeature
     Properties:
       PATH.host: ${ivy.var.intellixConnector.host}
       UserName: ${ivy.var.intellixConnector.username}
@@ -16,3 +17,4 @@ RestClients:
       com.sun.jersey.impl.client.httpclient.handleCookies: 'true'
       http.protocol.handle-redirects: 'true'
       JSON.Serialization.PROPERTY_INCLUSION: NON_NULL
+    LegacyUUID: a3fb2ba0-71ab-49a6-82fe-bb0c202b38bd
