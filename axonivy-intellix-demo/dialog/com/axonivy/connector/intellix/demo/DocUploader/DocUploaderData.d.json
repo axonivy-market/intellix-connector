@@ -4,11 +4,14 @@
   "namespace" : "com.axonivy.connector.intellix.demo.DocUploader",
   "fields" : [ {
     "name" : "ivyFile",
-    "type" : "File"
+    "type" : "File",
+    "modifiers" : [ ]
   }, {
     "name" : "showContent",
-    "type" : "Boolean"
+    "type" : "Boolean",
+    "modifiers" : [ ]
   }, {
-    "name" : "filePath"
+    "name" : "filePath",
+    "modifiers" : [ ]
   } ]
 }

@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.connector.intellix.demo.InvoiceViewer",
   "fields" : [ {
     "name" : "invoice",
-    "type" : "com.axonivy.connector.intellix.demo.Data"
+    "type" : "com.axonivy.connector.intellix.demo.Data",
+    "modifiers" : [ ]
   } ]
 }
