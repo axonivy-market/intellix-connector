@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import ch.ivyteam.ivy.data.cache.IDataCacheEntry;
 import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.rest.client.feature.FeatureConfig;
 
 /**
  * Feature to make sure, that we have the DocuWare cookies.
@@ -58,7 +58,7 @@ public class IntellixAuthFeature implements Feature, ClientRequestFilter, Client
 
 				Configuration configuration = reqContext.getConfiguration();
 
-				FeatureConfig config = new FeatureConfig(configuration, IntellixAuthFeature.class);
+				FeatureConfig config = FeatureConfig.of(configuration, IntellixAuthFeature.class);
 
 				Form form = new Form()
 						.param("UserName", config.readMandatory(USERNAME_PROPERTY))
