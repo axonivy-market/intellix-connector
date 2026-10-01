@@ -1,0 +1,89 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/process.json",
+  "id" : "18166227E0841472",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.connector.intellix.intellixData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "identify(File)",
+      "config" : {
+        "signature" : "call",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "java.io.File", "desc" : "The file (PDF) to process" }
+          ],
+          "map" : {
+            "out.file" : "param.file"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "indexData", "type" : "com.docuware.dev._public.services.intellix.IndexData", "desc" : "Identified fields from the given file" }
+          ],
+          "map" : {
+            "result.indexData" : "in.indexData"
+          }
+        }
+      },
+      "tags" : [
+        "connector"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "labelOffset" : { "x" : 20, "y" : 37 },
+        "icon" : "res:/webContent/logos/intellix.png"
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "RestClientCall",
+      "name" : "intellix",
+      "config" : {
+        "method" : "POST",
+        "target" : {
+          "clientId" : "intellix",
+          "path" : "documents",
+          "templateParams" : {
+            "host" : ""
+          },
+          "queryParams" : {
+            "extract" : "true"
+          }
+        },
+        "body" : {
+          "type" : "FORM",
+          "mediaType" : "multipart/form-data",
+          "form" : {
+            "file" : [ "in.file" ],
+            "msName" : [ "ivy.var.get(\"intellixConnector.msName\")" ]
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.docuware.dev._public.services.intellix.FeedbackMessage",
+            "map" : {
+              "out.indexData" : "result.indexData;"
+            },
+            "code" : "ivy.log.info(\"recognized field count: \"+result.indexData.getField().size());"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    } ]
+}
