@@ -1,0 +1,10 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "InvoiceViewerData",
+  "namespace" : "com.axonivy.connector.intellix.demo.InvoiceViewer",
+  "fields" : [ {
+    "name" : "invoice",
+    "type" : "com.axonivy.connector.intellix.demo.Data",
+    "modifiers" : [ ]
+  } ]
+}

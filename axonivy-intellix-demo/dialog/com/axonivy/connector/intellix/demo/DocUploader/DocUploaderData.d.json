@@ -1,0 +1,17 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "DocUploaderData",
+  "namespace" : "com.axonivy.connector.intellix.demo.DocUploader",
+  "fields" : [ {
+    "name" : "ivyFile",
+    "type" : "File",
+    "modifiers" : [ ]
+  }, {
+    "name" : "showContent",
+    "type" : "Boolean",
+    "modifiers" : [ ]
+  }, {
+    "name" : "filePath",
+    "modifiers" : [ ]
+  } ]
+}
