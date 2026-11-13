@@ -10,7 +10,7 @@ import com.axonivy.connector.intellix.connector.IntellixAuthFeature;
 import com.axonivy.connector.intellix.demo.Data;
 import com.docuware.dev._public.services.intellix.Field;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
@@ -28,7 +28,7 @@ public class IntellixProcessTest {
   private static final BpmProcess testee = BpmProcess.path("intellixDemo");
 
   @Test
-  public void canIdentifyFields(BpmClient bpmClient, IApplication app) {
+  public void canIdentifyFields(BpmClient bpmClient, Application app) {
     setupMockRestClient(app);
     bpmClient.mock().element(BpmElement.pid("1816266FC8F333CC-f13")).withNoAction();
 
@@ -43,7 +43,7 @@ public class IntellixProcessTest {
     assertThat(mailField.getValue().get(0).getText()).isEqualTo("mail@alternate.de");
   }
 
-  private static void setupMockRestClient(IApplication app) {
+  private static void setupMockRestClient(Application app) {
     RestClient restClient = RestClients.of(app).find("intellix");
 
     // change created client: use test url

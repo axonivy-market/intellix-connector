@@ -1,0 +1,14 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "intellixData",
+  "namespace" : "com.axonivy.connector.intellix",
+  "fields" : [ {
+    "name" : "file",
+    "type" : "java.io.File",
+    "modifiers" : [ ]
+  }, {
+    "name" : "indexData",
+    "type" : "com.docuware.dev._public.services.intellix.IndexData",
+    "modifiers" : [ ]
+  } ]
+}
